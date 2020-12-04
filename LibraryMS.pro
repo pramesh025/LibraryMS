@@ -10,7 +10,8 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    login.cpp
+    login.cpp \
+    student_page.cpp
 
 HEADERS += \
     admin.h \
@@ -18,6 +19,7 @@ HEADERS += \
     json_parsing.h \
     login.h \
     student.h \
+    student_page.h \
     user.h
 
 FORMS += \
@@ -30,4 +32,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    JSON/book_data.json \
     JSON/student_data.json

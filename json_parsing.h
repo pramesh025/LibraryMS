@@ -10,8 +10,10 @@
 
 
 class parsedata{
+    QJsonArray s_data;
+    int s_num;
     public:
-        void parse_student_data(){
+        parsedata(){
             //parsing json data
             QFile file("../LibraryMS/JSON/student_data.json");
             if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -25,8 +27,16 @@ class parsedata{
             }
             // Get JSON object
             QJsonArray json = doc.array();
-            int a=json.count()-1;
-            qDebug()<<a << json.at(a).toObject()["id"];
+            int num=json.count()-1;
+            s_data = json;
+            s_num = num;
         }
+        QJsonArray student_data(){
+            return s_data;
+        }
+        int student_no(){
+            return s_num;
+        }
+
 };
 #endif // JSON_PARSING_H
