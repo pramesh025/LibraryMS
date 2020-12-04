@@ -1,0 +1,31 @@
+[{
+        "id": "076bei025",
+        "name": "Pramesh Shrestha",
+        "password":"1234",
+        "year": 1,
+        "course":"BEI",
+        "roll":"076bei025",
+        "book_issued":["NULL","NULL","NULL","NULL","NULL","NULL","NULL"],
+        "access_level":"student"
+    },
+    {
+        "id": "076bei028",
+        "name": "Rahul Shrestha",
+        "password":"12345",
+        "year": 1,
+        "course":"BEI",
+        "roll":"076bei028",
+        "book_issued":["NULL","NULL","NULL","NULL","NULL","NULL","NULL"],
+        "access_level":"student"
+    },
+    {
+        "id": "076bei029",
+        "name": "Rahul Shrestha",
+        "password":"12345",
+        "year": 1,
+        "course":"BEI",
+        "roll":"076bei028",
+        "book_issued":["NULL","NULL","NULL","NULL","NULL","NULL","NULL"],
+        "access_level":"student"
+    }
+]

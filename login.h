@@ -15,6 +15,11 @@ public:
     login(QWidget *parent = nullptr);
     ~login();
 
+private slots:
+    void on_pushButton_login_clicked();
+
+    void on_lineEdit_id_editingFinished();
+
 private:
     Ui::login *ui;
 };
