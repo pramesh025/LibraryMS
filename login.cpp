@@ -32,7 +32,8 @@ void login::on_pushButton_login_clicked()
             isdata=1;
             if(entered_password==stu_data.at(i).toObject()["password"].toString()){
                 hide();
-                student_page *s_page = new student_page();
+                student_page *s_page = new student_page(stu_data.at(i).toObject(),nullptr);
+                s_page->setWindowFlags(Qt::Window);
                 s_page->show();
 //              qDebug()<<"Password correct!!"<<Qt::endl<<"You shall enter!!!!!";
             }
