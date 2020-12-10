@@ -1,6 +1,5 @@
 #include "student_page.h"
 #include "ui_student_page.h"
-#include "json_parsing.h"
 #include "login.h"
 
 student_page::student_page(QJsonObject s_data, QWidget *parent) :
@@ -10,6 +9,13 @@ student_page::student_page(QJsonObject s_data, QWidget *parent) :
     ui->setupUi(this);
     student_page::s_data=s_data;
     ui->label_4->setText("Welcome, "+student_page::s_data["name"].toString()+"!");
+    ui->label_detail_name->setText(student_page::s_data["name"].toString());
+    ui->label_detail_course->setText("Course: "+student_page::s_data["course"].toString());
+    ui->label_detail_roll->setText("Roll no.: "+student_page::s_data["roll"].toString());
+    ui->label_detail_year->setText("Year: "+student_page::s_data["year"].toString());
+    ui->label_detail_part->setText("Part: "+student_page::s_data["part"].toString());
+
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 student_page::~student_page()

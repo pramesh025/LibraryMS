@@ -9,12 +9,14 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    admin_page.cpp \
     main.cpp \
     login.cpp \
     student_page.cpp
 
 HEADERS += \
     admin.h \
+    admin_page.h \
     book.h \
     json_parsing.h \
     login.h \
@@ -23,6 +25,7 @@ HEADERS += \
     user.h
 
 FORMS += \
+    admin_page.ui \
     login.ui \
     student_page.ui
 
@@ -32,5 +35,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    JSON/admin_data.json \
     JSON/book_data.json \
     JSON/student_data.json

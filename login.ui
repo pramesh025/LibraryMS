@@ -235,11 +235,6 @@
      <string>Help</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuExit">
-    <property name="title">
-     <string>Exit</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
      <string>About</string>
@@ -247,7 +242,6 @@
    </widget>
    <addaction name="menuAbout"/>
    <addaction name="menuHelp"/>
-   <addaction name="menuExit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

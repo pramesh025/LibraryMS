@@ -1,0 +1,25 @@
+[{
+        "id": "B001",
+        "name": "A Book Title",
+        "author":"A guy with a Name",
+        "_pub_year":"1420",
+        "_issued_by":"076bei025",
+        "_issued_date":"20201210"
+    },
+    {
+        "id": "B002",
+        "name": "A Book Title",
+        "author":"A guy with a Name",
+        "_pub_year":"1420",
+        "_issued_by":"NULL",
+        "_issued_date":"NULL"
+    },
+    {
+        "id": "B003",
+        "name": "A Book Title",
+        "author":"A guy with a Name",
+        "_pub_year":"1420",
+        "_issued_by":"NULL",
+        "_issued_date":"NULL"
+    }
+]
