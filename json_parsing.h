@@ -12,8 +12,10 @@
 class parsedata{
     QJsonArray s_data;
     QJsonArray ad_data;
+    QJsonArray _book_data;
     int s_num;
     int ad_num;
+    int book_num;
     public:
         parsedata(){
             //parsing student json data
@@ -32,7 +34,7 @@ class parsedata{
             int num=json.count()-1;
             s_data = json;
             s_num = num;
-
+            s_file.close();
             //parsing admin json data
             QFile ad_file("../LibraryMS/JSON/admin_data.json");
             if (!ad_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -49,6 +51,25 @@ class parsedata{
             num=ad_json.count()-1;
             ad_data = ad_json;
             ad_num = num;
+            ad_file.close();
+
+            //parsing book json data
+            QFile book_file("../LibraryMS/JSON/book_data.json");
+            if (!book_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
+            }
+            rawData = book_file.readAll();
+            // Parse document
+            QJsonDocument book_doc(QJsonDocument::fromJson(rawData));
+            if(book_doc.isEmpty()){
+                QMessageBox::critical(nullptr,"Error","book data empty");
+            }
+            // Get JSON object
+            QJsonArray book_json = book_doc.array();
+            num=book_json.count()-1;
+            _book_data = book_json;
+            book_num = num;
+            book_file.close();
         }
         QJsonArray student_data(){
             return s_data;
@@ -61,6 +82,12 @@ class parsedata{
         }
         int admin_no(){
             return ad_num;
+        }
+        QJsonArray book_data(){
+            return _book_data;
+        }
+        int book_no(){
+            return book_num;
         }
 
 };

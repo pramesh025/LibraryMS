@@ -1,25 +1,42 @@
-[{
+[
+    {
+        "author": "A guy with a Name",
         "id": "B001",
+        "issued_by": "076bei025",
+        "issued_date": "20201210",
         "name": "A Book Title",
-        "author":"A guy with a Name",
-        "_pub_year":"1420",
-        "_issued_by":"076bei025",
-        "_issued_date":"20201210"
+        "pub_year": "1420"
     },
     {
+        "author": "A guy with a Name",
         "id": "B002",
+        "issued_by": "NULL",
+        "issued_date": "NULL",
         "name": "A Book Title",
-        "author":"A guy with a Name",
-        "_pub_year":"1420",
-        "_issued_by":"NULL",
-        "_issued_date":"NULL"
+        "pub_year": "1420"
     },
     {
+        "author": "A guy with a Name",
         "id": "B003",
+        "issued_by": "NULL",
+        "issued_date": "NULL",
         "name": "A Book Title",
-        "author":"A guy with a Name",
-        "_pub_year":"1420",
-        "_issued_by":"NULL",
-        "_issued_date":"NULL"
+        "pub_year": "1420"
+    },
+    {
+        "author": "Rick Riorden",
+        "id": "B004",
+        "issued_by": "NULL",
+        "issued_date": "NULL",
+        "name": "Percy Jackson and the lightning theid",
+        "pub_year": "2005"
+    },
+    {
+        "author": "J. K. Rowling",
+        "id": "B005",
+        "issued_by": "NULL",
+        "issued_date": "NULL",
+        "name": "Harry Potter and the philosopher's stone",
+        "pub_year": "1997"
     }
 ]

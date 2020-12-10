@@ -1,31 +1,30 @@
 #ifndef USER_H
 #define USER_H
 
-#include<iostream>
-#include<string.h>
+#include<QString>
 
 class user{
     protected:
-        std::string _id;
-        std::string _name;
-        std::string _password;
+        QString _id;
+        QString _name;
+        QString _password;
     public:
-        std::string id(){
+        QString id(){
             return _id;
         }
-        void new_id(std::string new_id){
+        void new_id(QString new_id){
             _id=new_id;
         }
-        std::string name(){
+        QString name(){
             return _name;
         }
-        void new_name(std::string new_name){
+        void new_name(QString new_name){
             _name=new_name;
         }
-        std::string password(){
+        QString password(){
             return _password;
         }
-        void new_password(std::string new_password){
+        void new_password(QString new_password){
             _password=new_password;
         }
 };

@@ -31,6 +31,12 @@ private slots:
 
     void on_pushButton_edit_clicked();
 
+    void on_pushButton_add_2_clicked();
+
+    void on_pushButton_addConfirm_clicked();
+
+    void on_pushButton_addnewbook_clicked();
+
 private:
     Ui::admin_page *ui;
 };

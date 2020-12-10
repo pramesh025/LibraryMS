@@ -1,34 +1,97 @@
-[{
+[
+    {
+        "access_level": "student",
+        "book_issued": [
+            "B001",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL"
+        ],
+        "course": "BEI",
         "id": "076bei025",
         "name": "Pramesh Shrestha",
-        "password":"1234",
-        "year": "1",
-        "part":"2",
-        "course":"BEI",
-        "roll":"076bei025",
-        "book_issued":["B001","NULL","NULL","NULL","NULL","NULL","NULL"],
-        "access_level":"student"
+        "part": "2",
+        "password": "1234",
+        "roll": "076bei025",
+        "year": "1"
     },
     {
+        "access_level": "student",
+        "book_issued": [
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL"
+        ],
+        "course": "BEI",
         "id": "076bei028",
         "name": "Rahul Shrestha",
-        "password":"12345",
-        "year": "1",
-        "part":"2",
-        "course":"BEI",
-        "roll":"076bei028",
-        "book_issued":["NULL","NULL","NULL","NULL","NULL","NULL","NULL"],
-        "access_level":"student"
+        "part": "2",
+        "password": "12345",
+        "roll": "076bei028",
+        "year": "1"
     },
     {
+        "access_level": "student",
+        "book_issued": [
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL"
+        ],
+        "course": "BEI",
         "id": "",
         "name": "The Void",
-        "password":"",
-        "year": "1",
-        "part":"2",
-        "course":"BEI",
-        "roll":"076bei028",
-        "book_issued":["NULL","NULL","NULL","NULL","NULL","NULL","NULL"],
-        "access_level":"student"
+        "part": "2",
+        "password": "",
+        "roll": "076bei028",
+        "year": "1"
+    },
+    {
+        "access_level": "student",
+        "book_issued": [
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL"
+        ],
+        "course": "BEI",
+        "id": "076bei026",
+        "name": "Prashant Karn",
+        "part": "2",
+        "password": "1234",
+        "roll": "076bei026",
+        "year": "1"
+    },
+    {
+        "access_level": "student",
+        "book_issued": [
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL"
+        ],
+        "course": "BEI",
+        "id": "076bei024",
+        "name": "Prakriti Timalsina",
+        "part": "2",
+        "password": "1234",
+        "roll": "076bei024",
+        "year": "1"
     }
 ]
