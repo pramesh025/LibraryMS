@@ -6,7 +6,7 @@
 #include "admin.h"
 #include "student.h"
 #include "book.h"
-#include  "json_parsing.h"
+#include "json_parsing.h"
 
 QJsonObject stu_to_qjsonobj(student temp){
     QJsonObject Jtemp;
@@ -83,7 +83,6 @@ void admin_page::on_pushButton_edit_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
 }
-
 void admin_page::on_pushButton_add_2_clicked()
 {
     foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
@@ -174,5 +173,223 @@ void admin_page::on_pushButton_addnewbook_clicked()
             ui->stackedWidget->setCurrentIndex(3);
         }
 
+    }
+}
+
+QString edit_stud_id_temp;
+void admin_page::on_pushButton_edit_stuID_SEARCH_clicked()
+{
+    QString input_id = ui->lineEdit_stu_id_edit->text();
+//    qDebug()<<input_id;
+    parsedata temp;
+    QJsonArray s_temp=temp.student_data();
+    bool is_data = false;
+    for(int i=0;i<=temp.student_no();i++){
+        if(s_temp.at(i).toObject()["id"].toString()==input_id){
+//            qDebug()<<s_temp.at(i).toObject()["id"].toString();
+            is_data=true;
+            edit_stud_id_temp=s_temp.at(i).toObject()["id"].toString();
+            ui->stackedWidget->setCurrentIndex(7);
+            ui->lineEdit_edit_id->setText(s_temp.at(i).toObject()["id"].toString());
+            ui->lineEdit_edit_name->setText(s_temp.at(i).toObject()["name"].toString());
+            ui->lineEdit_edit_year->setText(s_temp.at(i).toObject()["year"].toString());
+            ui->lineEdit_edit_part->setText(s_temp.at(i).toObject()["part"].toString());
+            ui->lineEdit_edit_password->setText(s_temp.at(i).toObject()["password"].toString());
+            ui->lineEdit_edit_course->setText(s_temp.at(i).toObject()["course"].toString());
+        }
+    }
+    if(is_data==false){
+            QMessageBox::critical(nullptr,"Error","Student data doesnt exist");
+    }
+}
+
+void admin_page::on_pushButton_edit_confirm_clicked()
+{
+    parsedata *json = new parsedata;
+    QJsonArray s_json= json->student_data();
+    //checks for pre-existing data
+    bool data_already_exists = false;
+    for(int i=0;i<=json->student_no();i++){
+        if(ui->lineEdit_edit_id->text().toLower()==s_json.at(i).toObject()["id"].toString() && ui->lineEdit_edit_id->text().toLower()!=edit_stud_id_temp.toLower()){
+            QMessageBox::critical(nullptr,"error","ID already exists");
+            data_already_exists=true;
+        }
+    }
+    if(data_already_exists==false){
+//        qDebug()<<"we are in";
+        student new_stu;
+        new_stu.new_id(ui->lineEdit_edit_id->text());
+        new_stu.new_name(ui->lineEdit_edit_name->text());
+        new_stu.new_password(ui->lineEdit_edit_password->text());
+        new_stu.new_course(ui->lineEdit_edit_course->text());
+        new_stu.new_year(ui->lineEdit_edit_year->text());
+        new_stu.new_part(ui->lineEdit_edit_part->text());
+        new_stu.new_roll(ui->lineEdit_edit_id->text());
+        QJsonObject new_stu_obj = stu_to_qjsonobj(new_stu);
+        for(int i=0;i<=json->student_no();i++){
+            if(edit_stud_id_temp==s_json.at(i).toObject()["id"].toString()){
+                s_json.removeAt(i);
+                break;
+            }
+        }
+        qDebug()<<s_json;
+        s_json.append(new_stu_obj);
+        qDebug()<<s_json;
+        QFile s_file("../LibraryMS/JSON/student_data.json");
+        if (!s_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::critical(nullptr,"Error", "Error in parsing student data");
+        }
+        QJsonDocument doc(s_json);
+        if(!s_file.write(doc.toJson()))
+            QMessageBox::critical(nullptr,"Error", "Data could not be edited");
+        else{
+            QMessageBox::about(nullptr,"Success","Data edited successfully");
+            foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+                le->clear();
+            }
+            ui->stackedWidget->setCurrentIndex(4);
+        }
+        s_file.close();
+    }
+
+}
+
+void admin_page::on_pushButton_delete_data_clicked()
+{
+    parsedata *json = new parsedata;
+    QJsonArray s_json= json->student_data();
+    for(int i=0;i<=json->student_no();i++){
+        if(edit_stud_id_temp==s_json.at(i).toObject()["id"].toString()){
+            s_json.removeAt(i);
+            break;
+        }
+    }
+//  qDebug()<<s_json;
+
+    QMessageBox::StandardButton confirm;
+    confirm = QMessageBox::question(this, "Confirm", "Are you sure you want to delete?\nID: "+edit_stud_id_temp,
+                                    QMessageBox::Yes|QMessageBox::No);
+    if(confirm == QMessageBox::Yes){
+        QFile s_file("../LibraryMS/JSON/student_data.json");
+        if (!s_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::critical(nullptr,"Error", "Error in parsing student data");
+        }
+        QJsonDocument doc(s_json);
+        if(!s_file.write(doc.toJson()))
+            QMessageBox::critical(nullptr,"Error", "Data could not be deleted");
+        else{
+            QMessageBox::about(nullptr,"Success","Data deleted successfully");
+            foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+                le->clear();
+            }
+            ui->stackedWidget->setCurrentIndex(4);
+        }
+        s_file.close();
+    }
+}
+
+QString edit_book_id_temp;
+void admin_page::on_pushButton_edit_bookID_search_clicked()
+{
+    QString input_id = ui->lineEdit_book_id_edit->text();
+//    qDebug()<<input_id;
+    parsedata temp;
+    QJsonArray book_temp=temp.book_data();
+    bool is_data = false;
+    for(int i=0;i<=temp.book_no();i++){
+        if(book_temp.at(i).toObject()["id"].toString()==input_id){
+//            qDebug()<<book_temp.at(i).toObject()["id"].toString();
+            is_data=true;
+            edit_book_id_temp=book_temp.at(i).toObject()["id"].toString();
+            ui->stackedWidget->setCurrentIndex(8);
+            ui->lineEdit_edit_book_id->setText(book_temp.at(i).toObject()["id"].toString());
+            ui->lineEdit_edit_book_name->setText(book_temp.at(i).toObject()["name"].toString());
+            ui->lineEdit_edit_book_year->setText(book_temp.at(i).toObject()["pub_year"].toString());
+            ui->lineEdit_edit_book_author->setText(book_temp.at(i).toObject()["author"].toString());
+        }
+    }
+    if(is_data==false){
+            QMessageBox::critical(nullptr,"Error","book data doesnt exist");
+    }
+}
+
+void admin_page::on_pushButton_edit_book_clicked()
+{
+    parsedata *json = new parsedata;
+    QJsonArray book_json= json->book_data();
+    //checks for pre-existing data
+    bool data_already_exists = false;
+    for(int i=0;i<=json->book_no();i++){
+        if(ui->lineEdit_edit_id->text().toLower()==book_json.at(i).toObject()["id"].toString() && ui->lineEdit_edit_id->text().toLower()!=edit_book_id_temp.toLower()){
+            QMessageBox::critical(nullptr,"error","ID already exists");
+            data_already_exists=true;
+        }
+    }
+    if(data_already_exists==false){
+//        qDebug()<<"we are in";
+        book new_book;
+        new_book.new_id(ui->lineEdit_edit_book_id->text());
+        new_book.new_name(ui->lineEdit_edit_book_name->text());
+        new_book.new_author(ui->lineEdit_edit_book_author->text());
+        new_book.new_pub_year(ui->lineEdit_edit_book_year->text());
+        QJsonObject new_book_obj = book_to_qjsonobj(new_book);
+        for(int i=0;i<=json->book_no();i++){
+            if(edit_book_id_temp==book_json.at(i).toObject()["id"].toString()){
+                book_json.removeAt(i);
+                break;
+            }
+        }
+//        qDebug()<<book_json;
+        book_json.append(new_book_obj);
+//        qDebug()<<book_json;
+        QFile s_file("../LibraryMS/JSON/book_data.json");
+        if (!s_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
+        }
+        QJsonDocument doc(book_json);
+        if(!s_file.write(doc.toJson()))
+            QMessageBox::critical(nullptr,"Error", "Data could not be edited");
+        else{
+            QMessageBox::about(nullptr,"Success","Data edited successfully");
+            foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+                le->clear();
+            }
+            ui->stackedWidget->setCurrentIndex(4);
+        }
+        s_file.close();
+    }
+}
+
+void admin_page::on_pushButton_delete_book_clicked()
+{
+    parsedata *json = new parsedata;
+    QJsonArray book_json= json->book_data();
+    for(int i=0;i<=json->book_no();i++){
+        if(edit_book_id_temp==book_json.at(i).toObject()["id"].toString()){
+            book_json.removeAt(i);
+            break;
+        }
+    }
+//  qDebug()<<book_json;
+
+    QMessageBox::StandardButton confirm;
+    confirm = QMessageBox::question(this, "Confirm", "Are you sure you want to delete?\nID: "+edit_book_id_temp,
+                                    QMessageBox::Yes|QMessageBox::No);
+    if(confirm == QMessageBox::Yes){
+        QFile book_file("../LibraryMS/JSON/book_data.json");
+        if (!book_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
+        }
+        QJsonDocument doc(book_json);
+        if(!book_file.write(doc.toJson()))
+            QMessageBox::critical(nullptr,"Error", "Data could not be deleted");
+        else{
+            QMessageBox::about(nullptr,"Success","Data deleted successfully");
+            foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+                le->clear();
+            }
+            ui->stackedWidget->setCurrentIndex(4);
+        }
+        book_file.close();
     }
 }

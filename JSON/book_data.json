@@ -1,14 +1,6 @@
 [
     {
         "author": "A guy with a Name",
-        "id": "B001",
-        "issued_by": "076bei025",
-        "issued_date": "20201210",
-        "name": "A Book Title",
-        "pub_year": "1420"
-    },
-    {
-        "author": "A guy with a Name",
         "id": "B002",
         "issued_by": "NULL",
         "issued_date": "NULL",
@@ -38,5 +30,13 @@
         "issued_date": "NULL",
         "name": "Harry Potter and the philosopher's stone",
         "pub_year": "1997"
+    },
+    {
+        "author": "A guy with a Name",
+        "id": "B001",
+        "issued_by": "NULL",
+        "issued_date": "NULL",
+        "name": "A Book Title",
+        "pub_year": "1430"
     }
 ]

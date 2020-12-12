@@ -49,25 +49,6 @@
             "NULL"
         ],
         "course": "BEI",
-        "id": "",
-        "name": "The Void",
-        "part": "2",
-        "password": "",
-        "roll": "076bei028",
-        "year": "1"
-    },
-    {
-        "access_level": "student",
-        "book_issued": [
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL"
-        ],
-        "course": "BEI",
         "id": "076bei026",
         "name": "Prashant Karn",
         "part": "2",
@@ -92,6 +73,25 @@
         "part": "2",
         "password": "1234",
         "roll": "076bei024",
+        "year": "1"
+    },
+    {
+        "access_level": "student",
+        "book_issued": [
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL",
+            "NULL"
+        ],
+        "course": "BZZ",
+        "id": "",
+        "name": "The Void",
+        "part": "2",
+        "password": "",
+        "roll": "",
         "year": "1"
     }
 ]

@@ -37,6 +37,18 @@ private slots:
 
     void on_pushButton_addnewbook_clicked();
 
+    void on_pushButton_edit_stuID_SEARCH_clicked();
+
+    void on_pushButton_edit_confirm_clicked();
+
+    void on_pushButton_delete_data_clicked();
+
+    void on_pushButton_edit_bookID_search_clicked();
+
+    void on_pushButton_edit_book_clicked();
+
+    void on_pushButton_delete_book_clicked();
+
 private:
     Ui::admin_page *ui;
 };
