@@ -68,6 +68,10 @@ void admin_page::on_pushButton_logout_clicked()
 void admin_page::on_pushButton_checkin_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+    //clean that sht
+    ui->label_issue_BookName->setText("");
+    ui->label_issue_BookAuthor->setText("");
+    ui->label_issue_BookStatus->setText("");
 }
 QString issue_stu_ID;
 bool can_issue=false;
@@ -76,7 +80,7 @@ void admin_page::on_pushButton_issue_stID_search_clicked()
     parsedata *json = new parsedata;
     QJsonArray stu_json = json->student_data();
     QString input_st=ui->lineEdit_issue_stID_search->text();
-    //clean that sht
+    //clean that sht part 2
     ui->label_issue_stuName->setText("");
     ui->label_issue_stuYear->setText("");
     ui->label_issue_stuCourse->setText("");
@@ -107,7 +111,7 @@ void admin_page::on_pushButton_issue_bID_search_clicked()
     parsedata *json = new parsedata;
     QJsonArray book_json = json->book_data();
     QString input_book=ui->lineEdit_issue_bID_search->text();
-    //clean that sht part2
+    //clean that sht part 3
     ui->label_issue_BookName->setText("");
     ui->label_issue_BookAuthor->setText("");
     ui->label_issue_BookStatus->setText("");
@@ -190,6 +194,7 @@ void admin_page::on_pushButton_issue_clicked()
                     }
                     else{
                         QMessageBox::about(nullptr,"Success","issued successfully");
+                        on_pushButton_clear_clicked();
                     }
                     stu_file.close();
 //                    qDebug()<<stu_json;
@@ -199,6 +204,22 @@ void admin_page::on_pushButton_issue_clicked()
         }
     }
 }
+
+void admin_page::on_pushButton_clear_clicked()
+{
+    //Jesus Christ!!!! CLEAN IT ALL!!!
+    ui->label_issue_BookName->setText("");
+    ui->label_issue_BookAuthor->setText("");
+    ui->label_issue_BookStatus->setText("");
+    ui->label_issue_stuName->setText("");
+    ui->label_issue_stuYear->setText("");
+    ui->label_issue_stuCourse->setText("");
+    ui->label_issue_stuIssued->setText("");
+    foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+        le->clear();
+    }
+}
+
 
 
 
@@ -583,5 +604,6 @@ void admin_page::on_pushButton_delete_book_clicked()
         book_file.close();
     }
 }
+
 
 

@@ -38,20 +38,10 @@
     {
         "access_level": "student",
         "book_issued": [
-        ],
-        "course": "BXX",
-        "id": "",
-        "name": "The Void",
-        "part": "2",
-        "password": "",
-        "roll": "",
-        "year": "1"
-    },
-    {
-        "access_level": "student",
-        "book_issued": [
             "B001",
-            "B002"
+            "B002",
+            "B003",
+            "B004"
         ],
         "course": "BEI",
         "id": "076bei025",
@@ -59,6 +49,19 @@
         "part": "2",
         "password": "1234",
         "roll": "076bei025",
+        "year": "1"
+    },
+    {
+        "access_level": "student",
+        "book_issued": [
+            "b005"
+        ],
+        "course": "BXX",
+        "id": "",
+        "name": "The Void",
+        "part": "2",
+        "password": "",
+        "roll": "",
         "year": "1"
     }
 ]

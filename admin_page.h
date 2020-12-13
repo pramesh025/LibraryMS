@@ -55,6 +55,8 @@ private slots:
 
     void on_pushButton_issue_clicked();
 
+    void on_pushButton_clear_clicked();
+
 private:
     Ui::admin_page *ui;
 };
