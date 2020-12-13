@@ -50,8 +50,6 @@
     {
         "access_level": "student",
         "book_issued": [
-            "B001",
-            "B002"
         ],
         "course": "BEI",
         "id": "076bei025",

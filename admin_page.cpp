@@ -134,7 +134,6 @@ void admin_page::on_pushButton_issue_bID_search_clicked()
             else{
                 ui->label_issue_BookStatus->setText("Already Issued");
                 QMessageBox::critical(this,"Error","Book ALready issued");
-
             }
             break;
         }
@@ -314,7 +313,7 @@ void admin_page::on_pushButton_Renew_clicked()
         parsedata *json = new parsedata;
         date today;
         QJsonArray book_json = json->book_data();
-        qDebug()<<"WE ARE HERE";
+//        qDebug()<<"WE ARE HERE";
         for(int i=0;i<=json->book_no();i++){
             if(renew_book_ID.toLower()==book_json.at(i).toObject()["id"].toString().toLower()){
                 QJsonObject temp = book_json.at(i).toObject();
@@ -379,6 +378,163 @@ void admin_page::on_pushButton_checkouts_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
+QJsonObject checkout_stu_data;
+bool can_checkout = false;
+void admin_page::on_pushButton_out_stID_search_3_clicked()
+{
+    parsedata *json = new parsedata;
+    QJsonArray stu_json = json->student_data();
+    QString input_st=ui->lineEdit_out_stID_search_3->text();
+    //clean that sht
+    ui->label_out_stuName_3->setText("");
+    ui->label_out_stuYear_3->setText("");
+    ui->label_out_stuCourse_3->setText("");
+    bool is_data=false;
+    for(int i=0;i<=json->student_no();i++){
+        if(stu_json.at(i).toObject()["id"].toString().toLower()==input_st.toLower()){
+            is_data=true;
+            ui->label_out_stuName_3->setText(stu_json.at(i).toObject()["name"].toString());
+            ui->label_out_stuYear_3->setText(stu_json.at(i).toObject()["year"].toString()+"/"+stu_json.at(i).toObject()["part"].toString());
+            ui->label_out_stuCourse_3->setText(stu_json.at(i).toObject()["course"].toString());
+            checkout_stu_data=stu_json.at(i).toObject();
+            break;
+        }
+    }
+    if(is_data==false)
+        QMessageBox::critical(this,"Error","Student ID doesnt exists");
+}
+
+QJsonObject checkout_book_data;
+void admin_page::on_pushButton_out_bID_search_3_clicked()
+{
+    parsedata *json = new parsedata;
+    QJsonArray book_json = json->book_data();
+    QString input_book=ui->lineEdit_out_bID_search_3->text();
+    //clean that sht part 3
+    ui->label_out_BookName_3->setText("");
+    ui->label_out_BookAuthor_3->setText("");
+    ui->label_out_BookFine_2->setText("");
+    bool is_data=false;
+    for(int i=0;i<=checkout_stu_data["book_issued"].toArray().count();i++){
+        if(checkout_stu_data["book_issued"].toArray().at(i).toString().toLower()==input_book.toLower()){
+            for(int j=0;j<=json->book_no();j++){
+                if(input_book.toLower()==book_json.at(j).toObject()["id"].toString().toLower()){
+                    is_data=true;
+                    can_checkout=true;
+                    checkout_book_data = book_json.at(j).toObject();
+                    ui->label_out_BookName_3->setText(book_json.at(j).toObject()["name"].toString());
+                    ui->label_out_BookAuthor_3->setText(book_json.at(j).toObject()["author"].toString());
+                    QDate iss_Date=QDate::fromString(book_json.at(j).toObject()["issued_date"].toString(), "yyyyMMdd").addDays(deadline_day);
+                    QDate today(QDate::currentDate());
+                    int day= iss_Date.daysTo(today);
+//                    qDebug()<<iss_Date.toString("yyyy.MM.dd");
+//                    qDebug()<<today.toString("yyyy.MM.dd");
+                    if(day-deadline_day>0)
+                        ui->label_out_BookFine_2->setText(QString::number(day*price));
+                    else
+                        ui->label_out_BookFine_2->setText(QString::number(0));
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    if(is_data==false)
+        QMessageBox::critical(this,"Error","Book ID doesnt exists or user hasnt issued the book");
+}
+
+void admin_page::on_pushButton_out_clicked()
+{
+    if(can_checkout){
+        parsedata *json = new parsedata;
+        date today;
+        bool success = false;
+        QJsonArray book_json = json->book_data();
+        QJsonArray stu_json = json->student_data();
+//        changing student data
+        QJsonObject tempObj  = checkout_stu_data;
+        QJsonArray tempArr = tempObj["book_issued"].toArray();
+        for(int i=0;i<=tempArr.count();i++){
+            if(tempArr.at(i).toString().toLower()==checkout_book_data["id"].toString().toLower()){
+                tempArr.removeAt(i);
+                break;
+            }
+        }
+        tempObj.remove("book_issued");
+        tempObj.insert("book_issued",tempArr);
+//        qDebug()<<tempObj;
+        //remove previous data and add new from stu_json
+        for(int i=0;i<=json->student_no();i++){
+            if(stu_json.at(i).toObject()["id"].toString().toLower()==tempObj["id"].toString().toLower()){
+                stu_json.removeAt(i);
+                stu_json.append(tempObj);
+                break;
+            }
+        }
+        QFile stu_file("../LibraryMS/JSON/student_data.json");
+        if (!stu_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::critical(nullptr,"Error", "Error in parsing student data");
+        }
+        QJsonDocument doc(stu_json);
+        if(!stu_file.write(doc.toJson())){
+            QMessageBox::critical(nullptr,"Error", "Student Database couldnt be accessed");
+        }
+        else{
+            success = true;
+        }
+        stu_file.close();
+        //for the book
+        if(success){
+            checkout_book_data.remove("issued_by");
+            checkout_book_data.remove("issued_date");
+            checkout_book_data.insert("issued_by","NULL");
+            checkout_book_data.insert("issued_date","NULL");
+           //remove previus and add new data in book_json
+            for(int i=0;i<=json->book_no();i++){
+                if(checkout_book_data["id"].toString().toLower()==book_json.at(i).toObject()["id"].toString().toLower()){
+                    book_json.removeAt(i);
+                    book_json.append(checkout_book_data);
+                    break;
+                }
+            }
+            QFile book_file("../LibraryMS/JSON/book_data.json");
+            if (!book_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
+            }
+            QJsonDocument doc(book_json);
+            if(!book_file.write(doc.toJson())){
+                QMessageBox::critical(nullptr,"Error", "Book Database couldnt be accessed");
+            }
+            else{
+                QMessageBox::about(nullptr,"Success","Checkout successfully");
+                on_pushButton_clear_3_clicked();
+            }
+            book_file.close();
+        }
+
+    }
+    else{
+        QMessageBox::critical(this,"Error","checkout error\nNo data");
+    }
+}
+
+void admin_page::on_pushButton_clear_3_clicked()
+{
+    checkout_stu_data = {};
+    can_checkout=false;
+    checkout_book_data = {};
+    ui->label_out_BookName_3->setText("");
+    ui->label_out_BookAuthor_3->setText("");
+    ui->label_out_BookFine_2->setText("");
+    ui->label_out_stuName_3->setText("");
+    ui->label_out_stuYear_3->setText("");
+    ui->label_out_stuCourse_3->setText("");
+    foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+        le->clear();
+    }
+}
+
+
 
 
 
@@ -731,5 +887,3 @@ void admin_page::on_pushButton_delete_book_clicked()
         book_file.close();
     }
 }
-
-

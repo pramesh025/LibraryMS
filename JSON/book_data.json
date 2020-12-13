@@ -25,18 +25,18 @@
     },
     {
         "author": "A guy with a Name",
-        "id": "B002",
-        "issued_by": "076BEI025",
-        "issued_date": "20201113",
+        "id": "B001",
+        "issued_by": "NULL",
+        "issued_date": "NULL",
         "name": "A Book Title",
-        "pub_year": "1420"
+        "pub_year": "1430"
     },
     {
         "author": "A guy with a Name",
-        "id": "B001",
-        "issued_by": "076bei025",
-        "issued_date": "20201213",
+        "id": "B002",
+        "issued_by": "NULL",
+        "issued_date": "NULL",
         "name": "A Book Title",
-        "pub_year": "1430"
+        "pub_year": "1420"
     }
 ]
