@@ -2,32 +2,6 @@
     {
         "access_level": "student",
         "book_issued": [
-            "B001",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL"
-        ],
-        "course": "BEI",
-        "id": "076bei025",
-        "name": "Pramesh Shrestha",
-        "part": "2",
-        "password": "1234",
-        "roll": "076bei025",
-        "year": "1"
-    },
-    {
-        "access_level": "student",
-        "book_issued": [
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL"
         ],
         "course": "BEI",
         "id": "076bei028",
@@ -40,13 +14,6 @@
     {
         "access_level": "student",
         "book_issued": [
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL"
         ],
         "course": "BEI",
         "id": "076bei026",
@@ -59,13 +26,6 @@
     {
         "access_level": "student",
         "book_issued": [
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL"
         ],
         "course": "BEI",
         "id": "076bei024",
@@ -78,20 +38,27 @@
     {
         "access_level": "student",
         "book_issued": [
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL",
-            "NULL"
         ],
-        "course": "BZZ",
+        "course": "BXX",
         "id": "",
         "name": "The Void",
         "part": "2",
         "password": "",
         "roll": "",
+        "year": "1"
+    },
+    {
+        "access_level": "student",
+        "book_issued": [
+            "B001",
+            "B002"
+        ],
+        "course": "BEI",
+        "id": "076bei025",
+        "name": "Pramesh Shrestha",
+        "part": "2",
+        "password": "1234",
+        "roll": "076bei025",
         "year": "1"
     }
 ]

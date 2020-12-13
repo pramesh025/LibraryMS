@@ -49,6 +49,12 @@ private slots:
 
     void on_pushButton_delete_book_clicked();
 
+    void on_pushButton_issue_stID_search_clicked();
+
+    void on_pushButton_issue_bID_search_clicked();
+
+    void on_pushButton_issue_clicked();
+
 private:
     Ui::admin_page *ui;
 };

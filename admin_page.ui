@@ -6,14 +6,36 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>719</width>
-    <height>455</height>
+    <width>765</width>
+    <height>460</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Library Management</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">color: rgb(46, 52, 54);
+background-color: rgb(255, 255, 255);</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_welcome">
+       <property name="text">
+        <string>Welcome,</string>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignRight">
+      <widget class="QPushButton" name="pushButton_logout">
+       <property name="text">
+        <string>Logout</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="1" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
@@ -145,24 +167,6 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label_welcome">
-       <property name="text">
-        <string>Welcome,</string>
-       </property>
-      </widget>
-     </item>
-     <item alignment="Qt::AlignRight">
-      <widget class="QPushButton" name="pushButton_logout">
-       <property name="text">
-        <string>Logout</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
    <item row="1" column="1">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="styleSheet">
@@ -170,87 +174,178 @@
 color: rgb(243, 243, 243);</string>
      </property>
      <property name="currentIndex">
-      <number>8</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page_book_issue">
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="4" column="1" colspan="2">
-        <widget class="QLineEdit" name="lineEdit">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+       <item row="3" column="0" rowspan="5" colspan="3">
+        <layout class="QGridLayout" name="gridLayout_12">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Student ID</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pushButton_issue_stID_search">
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1" colspan="2">
+          <widget class="QLabel" name="label_issue_stuYear">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(46, 52, 54);
+background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_43">
+           <property name="text">
+            <string>Course</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_42">
+           <property name="text">
+            <string>Year/Part</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1" colspan="2">
+          <widget class="QLabel" name="label_issue_stuName">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(46, 52, 54);
+background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1" colspan="2">
+          <widget class="QLabel" name="label_issue_stuCourse">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(46, 52, 54);
+background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_issue_stID_search">
+           <property name="font">
+            <font/>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(46, 52, 54);
+background-color: rgb(255, 255, 255);
+</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <spacer name="verticalSpacer_38">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="2">
+          <spacer name="verticalSpacer_37">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>150</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_46">
+           <property name="text">
+            <string>Issued Book</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1" colspan="2">
+          <widget class="QLabel" name="label_issue_stuIssued">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(46, 52, 54);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="3" rowspan="6">
+        <widget class="Line" name="line">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255)</string>
+          <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(255, 255, 255);</string>
          </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="label_2">
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>22</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-           <underline>false</underline>
-          </font>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
          </property>
-         <property name="text">
-          <string>BOOK ISSUE</string>
+         <property name="lineWidth">
+          <number>1</number>
          </property>
-        </widget>
-       </item>
-       <item row="5" column="1" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_3">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255)</string>
+         <property name="midLineWidth">
+          <number>0</number>
          </property>
-        </widget>
-       </item>
-       <item row="6" column="1" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_2">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Student's Name</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QPushButton" name="pushButton_9">
-         <property name="text">
-          <string>Add</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2">
-        <spacer name="horizontalSpacer">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
-       <item row="2" column="1">
-        <spacer name="verticalSpacer_3">
+       <item row="11" column="1">
+        <spacer name="verticalSpacer_35">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -262,42 +357,166 @@ color: rgb(243, 243, 243);</string>
          </property>
         </spacer>
        </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_6">
+       <item row="1" column="0" colspan="8">
+        <widget class="QLabel" name="label_2">
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
+           <family>Segoe UI</family>
+           <pointsize>22</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
           </font>
          </property>
-         <property name="text">
-          <string>Student's ID</string>
+         <property name="whatsThis">
+          <string notr="true"/>
          </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
          </property>
          <property name="text">
-          <string>Book ID</string>
+          <string>BOOK ISSUE</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>15</number>
          </property>
         </widget>
        </item>
        <item row="8" column="1">
-        <spacer name="verticalSpacer_2">
+        <spacer name="verticalSpacer_36">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>90</height>
+           <height>46</height>
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="3" column="4" rowspan="5" colspan="4">
+        <layout class="QGridLayout" name="gridLayout_14">
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_45">
+           <property name="text">
+            <string>Issued Status</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_41">
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <spacer name="verticalSpacer_34">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="1" colspan="2">
+          <widget class="QLineEdit" name="lineEdit_issue_bID_search">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(46, 52, 54);
+background-color: rgb(255, 255, 255);
+</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1" colspan="2">
+          <widget class="QLabel" name="label_issue_BookName">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(46, 52, 54);
+background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Book ID</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_44">
+           <property name="text">
+            <string>Author</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <spacer name="verticalSpacer_39">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>150</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="5" column="1" colspan="2">
+          <widget class="QLabel" name="label_issue_BookStatus">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(46, 52, 54);
+background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1" colspan="2">
+          <widget class="QLabel" name="label_issue_BookAuthor">
+           <property name="styleSheet">
+            <string notr="true">color: rgb(46, 52, 54);
+background-color: rgb(255, 255, 255);
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pushButton_issue_bID_search">
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_53">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item row="0" column="1">
         <spacer name="verticalSpacer_4">
@@ -311,6 +530,19 @@ color: rgb(243, 243, 243);</string>
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="9" column="1" colspan="2">
+        <widget class="QPushButton" name="pushButton_issue">
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Issue Book</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -1607,25 +1839,25 @@ color: rgb(46, 52, 54);</string>
   <tabstop>pushButton_checkouts</tabstop>
   <tabstop>pushButton_add</tabstop>
   <tabstop>pushButton_edit</tabstop>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>lineEdit_3</tabstop>
-  <tabstop>pushButton_9</tabstop>
-  <tabstop>lineEdit_4</tabstop>
-  <tabstop>lineEdit_5</tabstop>
-  <tabstop>lineEdit_6</tabstop>
-  <tabstop>pushButton_10</tabstop>
-  <tabstop>lineEdit_stu_id_edit</tabstop>
-  <tabstop>pushButton_edit_stuID_SEARCH</tabstop>
-  <tabstop>pushButton_edit_bookID_search</tabstop>
-  <tabstop>lineEdit_book_id_edit</tabstop>
+  <tabstop>lineEdit_issue_stID_search</tabstop>
+  <tabstop>pushButton_issue_stID_search</tabstop>
+  <tabstop>lineEdit_issue_bID_search</tabstop>
+  <tabstop>pushButton_issue_bID_search</tabstop>
+  <tabstop>lineEdit_11</tabstop>
   <tabstop>lineEdit_9</tabstop>
   <tabstop>lineEdit_10</tabstop>
   <tabstop>pushButton_13</tabstop>
-  <tabstop>lineEdit_11</tabstop>
+  <tabstop>lineEdit_5</tabstop>
+  <tabstop>lineEdit_6</tabstop>
+  <tabstop>lineEdit_4</tabstop>
+  <tabstop>pushButton_10</tabstop>
   <tabstop>radioButton_addbook</tabstop>
   <tabstop>radioButton_addstud</tabstop>
   <tabstop>pushButton_add_2</tabstop>
+  <tabstop>lineEdit_stu_id_edit</tabstop>
+  <tabstop>pushButton_edit_stuID_SEARCH</tabstop>
+  <tabstop>lineEdit_book_id_edit</tabstop>
+  <tabstop>pushButton_edit_bookID_search</tabstop>
   <tabstop>lineEdit_addID</tabstop>
   <tabstop>lineEdit_addName</tabstop>
   <tabstop>lineEdit_addYear</tabstop>
@@ -1633,6 +1865,25 @@ color: rgb(46, 52, 54);</string>
   <tabstop>lineEdit_addCourse</tabstop>
   <tabstop>lineEdit_addPass</tabstop>
   <tabstop>pushButton_addConfirm</tabstop>
+  <tabstop>lineEdit_addBookID</tabstop>
+  <tabstop>lineEdit_addBookName</tabstop>
+  <tabstop>lineEdit_addBookAuthor</tabstop>
+  <tabstop>lineEdit_addBookYear</tabstop>
+  <tabstop>pushButton_addnewbook</tabstop>
+  <tabstop>lineEdit_edit_name</tabstop>
+  <tabstop>lineEdit_edit_id</tabstop>
+  <tabstop>lineEdit_edit_course</tabstop>
+  <tabstop>lineEdit_edit_year</tabstop>
+  <tabstop>lineEdit_edit_part</tabstop>
+  <tabstop>lineEdit_edit_password</tabstop>
+  <tabstop>pushButton_edit_confirm</tabstop>
+  <tabstop>pushButton_delete_data</tabstop>
+  <tabstop>lineEdit_edit_book_id</tabstop>
+  <tabstop>lineEdit_edit_book_name</tabstop>
+  <tabstop>lineEdit_edit_book_author</tabstop>
+  <tabstop>lineEdit_edit_book_year</tabstop>
+  <tabstop>pushButton_edit_book</tabstop>
+  <tabstop>pushButton_delete_book</tabstop>
  </tabstops>
  <resources/>
  <connections/>

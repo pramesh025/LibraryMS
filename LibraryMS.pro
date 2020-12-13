@@ -18,6 +18,7 @@ HEADERS += \
     admin.h \
     admin_page.h \
     book.h \
+    date.h \
     json_parsing.h \
     login.h \
     student.h \
