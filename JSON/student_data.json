@@ -38,23 +38,6 @@
     {
         "access_level": "student",
         "book_issued": [
-            "B001",
-            "B002",
-            "B003",
-            "B004"
-        ],
-        "course": "BEI",
-        "id": "076bei025",
-        "name": "Pramesh Shrestha",
-        "part": "2",
-        "password": "1234",
-        "roll": "076bei025",
-        "year": "1"
-    },
-    {
-        "access_level": "student",
-        "book_issued": [
-            "b005"
         ],
         "course": "BXX",
         "id": "",
@@ -62,6 +45,20 @@
         "part": "2",
         "password": "",
         "roll": "",
+        "year": "1"
+    },
+    {
+        "access_level": "student",
+        "book_issued": [
+            "B001",
+            "B002"
+        ],
+        "course": "BEI",
+        "id": "076bei025",
+        "name": "Pramesh Shrestha",
+        "part": "2",
+        "password": "1234",
+        "roll": "076bei025",
         "year": "1"
     }
 ]

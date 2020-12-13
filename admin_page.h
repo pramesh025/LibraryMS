@@ -57,6 +57,14 @@ private slots:
 
     void on_pushButton_clear_clicked();
 
+    void on_pushButton_issue_stID_search_2_clicked();
+
+    void on_pushButton_issue_bID_search_2_clicked();
+
+    void on_pushButton_Renew_clicked();
+
+    void on_pushButton_clear_2_clicked();
+
 private:
     Ui::admin_page *ui;
 };

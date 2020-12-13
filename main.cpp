@@ -1,5 +1,5 @@
 #include "login.h"
-#include"student_page.h"
+//#include"student_page.h"
 #include"admin_page.h"
 #include <QApplication>
 

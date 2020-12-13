@@ -9,6 +9,9 @@
 #include "json_parsing.h"
 #include "date.h"
 
+
+const double price =0.5; //price for late turn in (per day)
+const int deadline_day=7; //deadline after ${deadline_day} from the issue day
 QJsonObject stu_to_qjsonobj(student temp){
     QJsonObject Jtemp;
     QJsonArray bookiss;
@@ -75,6 +78,7 @@ void admin_page::on_pushButton_checkin_clicked()
 }
 QString issue_stu_ID;
 bool can_issue=false;
+QString issue_book_ID;
 void admin_page::on_pushButton_issue_stID_search_clicked()
 {
     parsedata *json = new parsedata;
@@ -105,7 +109,7 @@ void admin_page::on_pushButton_issue_stID_search_clicked()
     if(is_data==false)
         QMessageBox::critical(this,"Error","Student ID doesnt exists");
 }
-QString issue_book_ID;
+
 void admin_page::on_pushButton_issue_bID_search_clicked()
 {
     parsedata *json = new parsedata;
@@ -208,6 +212,9 @@ void admin_page::on_pushButton_issue_clicked()
 void admin_page::on_pushButton_clear_clicked()
 {
     //Jesus Christ!!!! CLEAN IT ALL!!!
+    issue_stu_ID = " ";
+    can_issue=false;
+    issue_book_ID = " ";
     ui->label_issue_BookName->setText("");
     ui->label_issue_BookAuthor->setText("");
     ui->label_issue_BookStatus->setText("");
@@ -236,6 +243,126 @@ void admin_page::on_pushButton_renew_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
+
+QJsonObject renew_stu_data;
+bool can_renew = false;
+void admin_page::on_pushButton_issue_stID_search_2_clicked()
+{
+    parsedata *json = new parsedata;
+    QJsonArray stu_json = json->student_data();
+    QString input_st=ui->lineEdit_renew_stID_search_2->text();
+    //clean that sht
+    ui->label_renew_stuName_2->setText("");
+    ui->label_renew_stuYear_2->setText("");
+    ui->label_renew_stuCourse_2->setText("");
+    bool is_data=false;
+    for(int i=0;i<=json->student_no();i++){
+        if(stu_json.at(i).toObject()["id"].toString().toLower()==input_st.toLower()){
+            is_data=true;
+            ui->label_renew_stuName_2->setText(stu_json.at(i).toObject()["name"].toString());
+            ui->label_renew_stuYear_2->setText(stu_json.at(i).toObject()["year"].toString()+"/"+stu_json.at(i).toObject()["part"].toString());
+            ui->label_renew_stuCourse_2->setText(stu_json.at(i).toObject()["course"].toString());
+            renew_stu_data=stu_json.at(i).toObject();
+            break;
+        }
+    }
+    if(is_data==false)
+        QMessageBox::critical(this,"Error","Student ID doesnt exists");
+}
+
+QString renew_book_ID;
+void admin_page::on_pushButton_issue_bID_search_2_clicked()
+{
+    parsedata *json = new parsedata;
+    QJsonArray book_json = json->book_data();
+    QString input_book=ui->lineEdit_renew_bID_search_2->text();
+    //clean that sht part 3
+    ui->label_renew_BookName_2->setText("");
+    ui->label_renew_BookAuthor_2->setText("");
+    ui->label_renew_BookFine->setText("");
+    bool is_data=false;
+    for(int i=0;i<=renew_stu_data["book_issued"].toArray().count();i++){
+        if(renew_stu_data["book_issued"].toArray().at(i).toString().toLower()==input_book.toLower()){
+            for(int j=0;j<=json->book_no();j++){
+                if(input_book.toLower()==book_json.at(j).toObject()["id"].toString().toLower()){
+                    is_data=true;
+                    can_renew=true;
+                    renew_book_ID = input_book;
+                    ui->label_renew_BookName_2->setText(book_json.at(j).toObject()["name"].toString());
+                    ui->label_renew_BookAuthor_2->setText(book_json.at(j).toObject()["author"].toString());
+                    QDate iss_Date=QDate::fromString(book_json.at(j).toObject()["issued_date"].toString(), "yyyyMMdd").addDays(deadline_day);
+                    QDate today(QDate::currentDate());
+                    int day= iss_Date.daysTo(today);
+//                    qDebug()<<iss_Date.toString("yyyy.MM.dd");
+//                    qDebug()<<today.toString("yyyy.MM.dd");
+                    if(day-deadline_day>0)
+                        ui->label_renew_BookFine->setText(QString::number(day*price));
+                    else
+                        ui->label_renew_BookFine->setText(QString::number(0));
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    if(is_data==false)
+        QMessageBox::critical(this,"Error","Book ID doesnt exists or user hasnt issued the book");
+}
+void admin_page::on_pushButton_Renew_clicked()
+{
+    if(can_renew){
+        parsedata *json = new parsedata;
+        date today;
+        QJsonArray book_json = json->book_data();
+        qDebug()<<"WE ARE HERE";
+        for(int i=0;i<=json->book_no();i++){
+            if(renew_book_ID.toLower()==book_json.at(i).toObject()["id"].toString().toLower()){
+                QJsonObject temp = book_json.at(i).toObject();
+                book_json.removeAt(i);
+                temp.remove("issued_date");
+                temp.insert("issued_date",today.today());
+                book_json.append(temp);
+                QFile book_file("../LibraryMS/JSON/book_data.json");
+                if (!book_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                    QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
+                }
+                QJsonDocument doc(book_json);
+                if(!book_file.write(doc.toJson())){
+                    QMessageBox::critical(nullptr,"Error", "Book Database couldnt be accessed");
+                }
+                else{
+                    QMessageBox::about(this,"Success","Book Renewed");
+                    on_pushButton_clear_2_clicked();
+                }
+                book_file.close();
+//                qDebug()<<book_json;
+                break;
+            }
+        }
+    }
+    else{
+        QMessageBox::critical(this,"Error","Renew error\nNo data");
+    }
+}
+
+void admin_page::on_pushButton_clear_2_clicked()
+{
+    renew_book_ID=" ";
+    renew_stu_data = {};
+    can_renew = false;
+    ui->label_renew_BookAuthor_2->setText("");
+    ui->label_renew_BookName_2->setText("");
+    ui->label_renew_BookFine->setText("");
+    ui->label_renew_stuCourse_2->setText("");
+    ui->label_renew_stuName_2->setText("");
+    ui->label_renew_stuYear_2->setText("");
+    ui->label_issue_stuIssued->setText("");
+    foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+        le->clear();
+    }
+}
+
+
 
 
 
@@ -604,6 +731,5 @@ void admin_page::on_pushButton_delete_book_clicked()
         book_file.close();
     }
 }
-
 
 
