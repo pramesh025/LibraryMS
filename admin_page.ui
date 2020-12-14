@@ -36,6 +36,9 @@ background-color: rgb(255, 255, 255);</string>
          <pointsize>10</pointsize>
         </font>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Check-Ins</string>
        </property>
@@ -56,6 +59,9 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <pointsize>10</pointsize>
         </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Renew</string>
@@ -78,6 +84,9 @@ background-color: rgb(255, 255, 255);</string>
          <pointsize>10</pointsize>
         </font>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>  Check-Outs  </string>
        </property>
@@ -99,6 +108,9 @@ background-color: rgb(255, 255, 255);</string>
          <pointsize>10</pointsize>
         </font>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Add</string>
        </property>
@@ -119,6 +131,9 @@ background-color: rgb(255, 255, 255);</string>
         <font>
          <pointsize>10</pointsize>
         </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Edit/Delete </string>
@@ -160,6 +175,9 @@ background-color: rgb(255, 255, 255);</string>
      </item>
      <item alignment="Qt::AlignRight">
       <widget class="QPushButton" name="pushButton_logout">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Logout</string>
        </property>
@@ -174,7 +192,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(243, 243, 243);</string>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="page_book_issue">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -1522,35 +1540,27 @@ color: rgb(46, 52, 54);</string>
          <property name="text">
           <string>Edit Data</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
         </widget>
        </item>
       </layout>
      </widget>
      <widget class="QWidget" name="page_add_student">
       <layout class="QGridLayout" name="gridLayout_8">
-       <item row="1" column="1" colspan="3">
-        <widget class="QLabel" name="label_4">
-         <property name="font">
-          <font>
-           <pointsize>22</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
+       <item row="2" column="1">
+        <spacer name="verticalSpacer_22">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-         <property name="text">
-          <string>Add new Student</string>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
          </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QLabel" name="label_28">
-         <property name="text">
-          <string>Year</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
+        </spacer>
        </item>
        <item row="0" column="1">
         <spacer name="verticalSpacer_18">
@@ -1565,10 +1575,21 @@ color: rgb(46, 52, 54);</string>
          </property>
         </spacer>
        </item>
-       <item row="8" column="2" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_addPass">
+       <item row="7" column="2" colspan="2">
+        <widget class="QLineEdit" name="lineEdit_addCourse">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(46, 52, 54);</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLabel" name="label_31">
+         <property name="text">
+          <string>Password</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -1582,29 +1603,25 @@ color: rgb(46, 52, 54);</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>ID</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       <item row="8" column="2" colspan="2">
+        <widget class="QLineEdit" name="lineEdit_addPass">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="2" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_addYear">
+       <item row="6" column="2" colspan="2">
+        <widget class="QLineEdit" name="lineEdit_addPart">
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(46, 52, 54);
-</string>
+color: rgb(46, 52, 54);</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
-        <widget class="QLabel" name="label_31">
+       <item row="6" column="1">
+        <widget class="QLabel" name="label_29">
          <property name="text">
-          <string>Password</string>
+          <string>Part</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1634,27 +1651,6 @@ color: rgb(46, 52, 54);
          </property>
         </spacer>
        </item>
-       <item row="9" column="3">
-        <spacer name="verticalSpacer_19">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="2" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_addID">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(46, 52, 54);</string>
-         </property>
-        </widget>
-       </item>
        <item row="11" column="2">
         <spacer name="verticalSpacer_17">
          <property name="orientation">
@@ -1668,23 +1664,18 @@ color: rgb(46, 52, 54);</string>
          </property>
         </spacer>
        </item>
-       <item row="6" column="1">
-        <widget class="QLabel" name="label_29">
-         <property name="text">
-          <string>Part</string>
+       <item row="9" column="3">
+        <spacer name="verticalSpacer_19">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
          </property>
-        </widget>
-       </item>
-       <item row="4" column="2" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_addName">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(46, 52, 54);</string>
-         </property>
-        </widget>
+        </spacer>
        </item>
        <item row="1" column="0" rowspan="10">
         <spacer name="verticalSpacer_21">
@@ -1699,11 +1690,48 @@ color: rgb(46, 52, 54);</string>
          </property>
         </spacer>
        </item>
-       <item row="6" column="2" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_addPart">
+       <item row="3" column="1">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>ID</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="2">
+        <widget class="QLineEdit" name="lineEdit_addYear">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(46, 52, 54);
+</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2" colspan="2">
+        <widget class="QLineEdit" name="lineEdit_addName">
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(46, 52, 54);</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2" colspan="2">
+        <widget class="QLineEdit" name="lineEdit_addID">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(46, 52, 54);</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="label_28">
+         <property name="text">
+          <string>Year</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -1713,27 +1741,6 @@ color: rgb(46, 52, 54);</string>
           <string>Add</string>
          </property>
         </widget>
-       </item>
-       <item row="7" column="2" colspan="2">
-        <widget class="QLineEdit" name="lineEdit_addCourse">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(46, 52, 54);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <spacer name="verticalSpacer_22">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
        </item>
        <item row="1" column="4" rowspan="10">
         <spacer name="verticalSpacer_20">
@@ -1747,6 +1754,23 @@ color: rgb(46, 52, 54);</string>
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="1" column="1" colspan="3">
+        <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <pointsize>22</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Add new Student</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -1798,6 +1822,9 @@ color: rgb(46, 52, 54);</string>
          </property>
          <property name="text">
           <string>Add New Book</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -2059,20 +2086,6 @@ color: rgb(46, 52, 54);</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="0" colspan="2">
-          <widget class="QLabel" name="label_14">
-           <property name="font">
-            <font>
-             <pointsize>22</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Edit Student Data</string>
-           </property>
-          </widget>
-         </item>
          <item row="6" column="1" colspan="2">
           <widget class="QLineEdit" name="lineEdit_edit_year">
            <property name="styleSheet">
@@ -2134,6 +2147,23 @@ color: rgb(46, 52, 54);</string>
            </property>
           </widget>
          </item>
+         <item row="0" column="0" colspan="3">
+          <widget class="QLabel" name="label_14">
+           <property name="font">
+            <font>
+             <pointsize>22</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Edit Student Data</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>
@@ -2170,20 +2200,6 @@ color: rgb(46, 52, 54);</string>
         <widget class="QLabel" name="label_38">
          <property name="text">
           <string>Name</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_15">
-         <property name="font">
-          <font>
-           <pointsize>22</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Edit Book Data</string>
          </property>
         </widget>
        </item>
@@ -2270,6 +2286,23 @@ color: rgb(46, 52, 54);</string>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(46, 52, 54);</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QLabel" name="label_15">
+         <property name="font">
+          <font>
+           <pointsize>22</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Edit Book Data</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>

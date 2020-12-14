@@ -29,7 +29,7 @@
 background-color: rgb(46, 52, 54);</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="page_detail">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -46,21 +46,8 @@ background-color: rgb(46, 52, 54);</string>
          </property>
         </spacer>
        </item>
-       <item row="2" column="2">
-        <spacer name="horizontalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>271</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="4" column="1">
-        <spacer name="verticalSpacer_2">
+       <item row="1" column="1">
+        <spacer name="verticalSpacer_4">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -68,19 +55,6 @@ background-color: rgb(46, 52, 54);</string>
           <size>
            <width>20</width>
            <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="4">
-        <spacer name="verticalSpacer_7">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>103</height>
           </size>
          </property>
         </spacer>
@@ -97,23 +71,6 @@ background-color: rgb(46, 52, 54);</string>
           </size>
          </property>
         </spacer>
-       </item>
-       <item row="0" column="0" colspan="3">
-        <widget class="QLabel" name="label">
-         <property name="font">
-          <font>
-           <pointsize>20</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(238, 238, 236);</string>
-         </property>
-         <property name="text">
-          <string>  Student's Detail</string>
-         </property>
-        </widget>
        </item>
        <item row="2" column="1">
         <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -208,21 +165,21 @@ background-color: rgb(46, 52, 54);</string>
          </property>
         </spacer>
        </item>
-       <item row="4" column="4">
-        <spacer name="verticalSpacer_9">
+       <item row="2" column="2">
+        <spacer name="horizontalSpacer_5">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>20</width>
-           <height>123</height>
+           <width>271</width>
+           <height>20</height>
           </size>
          </property>
         </spacer>
        </item>
-       <item row="1" column="1">
-        <spacer name="verticalSpacer_4">
+       <item row="4" column="1">
+        <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -244,6 +201,42 @@ background-color: rgb(46, 52, 54);</string>
          </property>
          <property name="margin">
           <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <spacer name="verticalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>123</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0" colspan="6">
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(238, 238, 236);</string>
+         </property>
+         <property name="text">
+          <string>  Student's Detail</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>25</number>
          </property>
         </widget>
        </item>
@@ -277,8 +270,12 @@ background-color: rgb(46, 52, 54);</string>
            <kerning>true</kerning>
           </font>
          </property>
+         <property name="cursor" stdset="0">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(243, 243, 243);</string>
+          <string notr="true">color: rgb(243, 243, 243);
+background-color: rgb(46, 52, 54);</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>

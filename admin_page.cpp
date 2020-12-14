@@ -169,7 +169,7 @@ void admin_page::on_pushButton_issue_clicked()
                         success = false;
                     }
                     else{
-                        QMessageBox::about(nullptr,"Success","issued successfully");
+                        QMessageBox::about(nullptr,"Success","Issued successfully");
                         on_pushButton_clear_clicked();
                     }
                     stu_file.close();

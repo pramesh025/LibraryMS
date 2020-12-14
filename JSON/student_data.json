@@ -40,18 +40,6 @@
         "book_issued": [
         ],
         "course": "BEI",
-        "id": "076bei025",
-        "name": "Pramesh Shrestha",
-        "part": "2",
-        "password": "1234",
-        "roll": "076bei025",
-        "year": "1"
-    },
-    {
-        "access_level": "student",
-        "book_issued": [
-        ],
-        "course": "BEI",
         "id": "076bei019",
         "name": "kshitiz pandey",
         "part": "2",
@@ -74,6 +62,18 @@
         "part": "2",
         "password": "",
         "roll": "",
+        "year": "1"
+    },
+    {
+        "access_level": "student",
+        "book_issued": [
+        ],
+        "course": "BEI",
+        "id": "076bei025",
+        "name": "Pramesh Shrestha",
+        "part": "2",
+        "password": "1234",
+        "roll": "076bei025",
         "year": "1"
     }
 ]

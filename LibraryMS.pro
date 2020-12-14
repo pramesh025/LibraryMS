@@ -39,4 +39,5 @@ DISTFILES += \
     JSON/admin_data.json \
     JSON/book_data.json \
     JSON/student_data.json \
-    img/default_profile.jpg
+    img/default_profile.jpg \
+    img/icon.png
