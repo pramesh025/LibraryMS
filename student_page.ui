@@ -383,25 +383,21 @@
      </widget>
      <widget class="QWidget" name="page_issue_detail">
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="font">
-          <font>
-           <pointsize>20</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
+       <item row="1" column="0">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(238, 238, 236);</string>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
          </property>
-         <property name="text">
-          <string>Issued books</string>
-         </property>
-        </widget>
+        </spacer>
        </item>
-       <item row="1" column="0" colspan="2">
-        <widget class="QTableWidget" name="tableWidget">
+       <item row="1" column="1" colspan="2">
+        <widget class="QTableWidget" name="tableWidget_issuedBooks">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -429,6 +425,9 @@
           <bool>false</bool>
          </property>
          <property name="sortingEnabled">
+          <bool>false</bool>
+         </property>
+         <property name="cornerButtonEnabled">
           <bool>true</bool>
          </property>
          <row>
@@ -437,41 +436,6 @@
           </property>
           <property name="textAlignment">
            <set>AlignLeading|AlignVCenter</set>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>2</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>3</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>4</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>5</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>6</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string>7</string>
-          </property>
-         </row>
-         <row>
-          <property name="text">
-           <string/>
           </property>
          </row>
          <column>
@@ -499,47 +463,42 @@
            <string>Fine</string>
           </property>
          </column>
-         <item row="7" column="0">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="background">
-           <brush brushstyle="NoBrush">
-            <color alpha="0">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
-            </color>
-           </brush>
-          </property>
-          <property name="flags">
-           <set>NoItemFlags</set>
-          </property>
-         </item>
-         <item row="7" column="1">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="flags">
-           <set>NoItemFlags</set>
-          </property>
-         </item>
-         <item row="7" column="2">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="flags">
-           <set>NoItemFlags</set>
-          </property>
-         </item>
-         <item row="7" column="3">
-          <property name="text">
-           <string>Total</string>
-          </property>
-          <property name="flags">
-           <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable</set>
-          </property>
-         </item>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0" colspan="4">
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(238, 238, 236);</string>
+         </property>
+         <property name="text">
+          <string>Issued books</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>18</number>
+         </property>
         </widget>
        </item>
       </layout>

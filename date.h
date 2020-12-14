@@ -6,6 +6,8 @@
 
 class date{
     QString _today;
+    double _price =0.5; //price for late turn in (per day)
+    int _deadline_day=7; //deadline after ${deadline_day} from the issue day
     public:
         date(){
             QDate temp = QDate::currentDate();
@@ -14,6 +16,19 @@ class date{
         QString today(){
             return _today;
         }
+        double price(){
+            return _price;
+        }
+        int deadline_day(){
+            return _deadline_day;
+        }
+        QDate add_deadline(QDate input){
+            return input.addDays(_deadline_day);
+        }
+        QDate today_Qdate(){
+            return QDate::currentDate();
+        }
+
 };
 
 #endif // DATE_H

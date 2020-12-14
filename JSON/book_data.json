@@ -1,27 +1,51 @@
 [
     {
         "author": "A guy with a Name",
+        "id": "B002",
+        "issued_by": "",
+        "issued_date": "20201214",
+        "name": "A Book Title",
+        "pub_year": "1420"
+    },
+    {
+        "author": "A guy with a Name",
         "id": "B003",
-        "issued_by": "NULL",
-        "issued_date": "NULL",
+        "issued_by": "",
+        "issued_date": "20201214",
         "name": "A Book Title",
         "pub_year": "1420"
     },
     {
         "author": "Rick Riorden",
         "id": "B004",
-        "issued_by": "NULL",
-        "issued_date": "NULL",
+        "issued_by": "",
+        "issued_date": "20201214",
         "name": "Percy Jackson and the lightning theid",
         "pub_year": "2005"
     },
     {
         "author": "J. K. Rowling",
         "id": "B005",
-        "issued_by": "NULL",
-        "issued_date": "NULL",
+        "issued_by": "",
+        "issued_date": "20201201",
         "name": "Harry Potter and the philosopher's stone",
         "pub_year": "1997"
+    },
+    {
+        "author": "mathematician",
+        "id": "B006",
+        "issued_by": "",
+        "issued_date": "20201114",
+        "name": "Mathematics",
+        "pub_year": "2000"
+    },
+    {
+        "author": "english guy",
+        "id": "B008",
+        "issued_by": " ",
+        "issued_date": "20201213",
+        "name": "ENGLISH",
+        "pub_year": "2009"
     },
     {
         "author": "A guy with a Name",
@@ -32,11 +56,11 @@
         "pub_year": "1430"
     },
     {
-        "author": "A guy with a Name",
-        "id": "B002",
+        "author": "SCIENCE GUY",
+        "id": "B007",
         "issued_by": "NULL",
         "issued_date": "NULL",
-        "name": "A Book Title",
-        "pub_year": "1420"
+        "name": "SCIENCE",
+        "pub_year": "1998"
     }
 ]

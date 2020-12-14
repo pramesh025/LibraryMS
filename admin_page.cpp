@@ -10,33 +10,6 @@
 #include "date.h"
 
 
-const double price =0.5; //price for late turn in (per day)
-const int deadline_day=7; //deadline after ${deadline_day} from the issue day
-QJsonObject stu_to_qjsonobj(student temp){
-    QJsonObject Jtemp;
-    QJsonArray bookiss;
-    Jtemp.insert("id",temp.id());
-    Jtemp.insert("name",temp.name());
-    Jtemp.insert("password",temp.password());
-    Jtemp.insert("year",temp.year());
-    Jtemp.insert("part",temp.part());
-    Jtemp.insert("course",temp.course());
-    Jtemp.insert("roll",temp.roll());
-    Jtemp.insert("book_issued",bookiss);
-    Jtemp.insert("access_level","student");
-    return Jtemp;
-}
-
-QJsonObject book_to_qjsonobj(book temp){
-    QJsonObject Jtemp;
-    Jtemp.insert("id",temp.id());
-    Jtemp.insert("name",temp.name());
-    Jtemp.insert("author",temp.author());
-    Jtemp.insert("pub_year",temp.pub_year());
-    Jtemp.insert("issued_by",temp.issued_by());
-    Jtemp.insert("issued_date",temp.issued_date());
-    return Jtemp;
-}
 
 admin_page::admin_page(QJsonObject ad_data,QWidget *parent) :
     QWidget(parent),
@@ -287,15 +260,17 @@ void admin_page::on_pushButton_issue_bID_search_2_clicked()
                     is_data=true;
                     can_renew=true;
                     renew_book_ID = input_book;
+                    date date;
                     ui->label_renew_BookName_2->setText(book_json.at(j).toObject()["name"].toString());
                     ui->label_renew_BookAuthor_2->setText(book_json.at(j).toObject()["author"].toString());
-                    QDate iss_Date=QDate::fromString(book_json.at(j).toObject()["issued_date"].toString(), "yyyyMMdd").addDays(deadline_day);
+                    QDate iss_Date=QDate::fromString(book_json.at(j).toObject()["issued_date"].toString(), "yyyyMMdd").addDays(date.deadline_day());
+
                     QDate today(QDate::currentDate());
                     int day= iss_Date.daysTo(today);
 //                    qDebug()<<iss_Date.toString("yyyy.MM.dd");
 //                    qDebug()<<today.toString("yyyy.MM.dd");
-                    if(day-deadline_day>0)
-                        ui->label_renew_BookFine->setText(QString::number(day*price));
+                    if(day-date.deadline_day()>0)
+                        ui->label_renew_BookFine->setText(QString::number(day*date.price()));
                     else
                         ui->label_renew_BookFine->setText(QString::number(0));
                     break;
@@ -422,15 +397,17 @@ void admin_page::on_pushButton_out_bID_search_3_clicked()
                     is_data=true;
                     can_checkout=true;
                     checkout_book_data = book_json.at(j).toObject();
+                    date date;
                     ui->label_out_BookName_3->setText(book_json.at(j).toObject()["name"].toString());
                     ui->label_out_BookAuthor_3->setText(book_json.at(j).toObject()["author"].toString());
-                    QDate iss_Date=QDate::fromString(book_json.at(j).toObject()["issued_date"].toString(), "yyyyMMdd").addDays(deadline_day);
+                    QDate iss_Date=QDate::fromString(book_json.at(j).toObject()["issued_date"].toString(), "yyyyMMdd").addDays(date.deadline_day());
                     QDate today(QDate::currentDate());
                     int day= iss_Date.daysTo(today);
 //                    qDebug()<<iss_Date.toString("yyyy.MM.dd");
 //                    qDebug()<<today.toString("yyyy.MM.dd");
-                    if(day-deadline_day>0)
-                        ui->label_out_BookFine_2->setText(QString::number(day*price));
+
+                    if(day-date.deadline_day()>0)
+                        ui->label_out_BookFine_2->setText(QString::number(day*date.price()));
                     else
                         ui->label_out_BookFine_2->setText(QString::number(0));
                     break;
@@ -546,6 +523,7 @@ void admin_page::on_pushButton_clear_3_clicked()
  * ----                                                                                                 ------
  * ----------------------------------------------------------------------------------------------------------*/
 
+
 void admin_page::on_pushButton_add_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
@@ -587,7 +565,7 @@ void admin_page::on_pushButton_addConfirm_clicked()
         new_stu.new_year(ui->lineEdit_addYear->text());
         new_stu.new_part(ui->lineEdit_addPart->text());
         new_stu.new_roll(ui->lineEdit_addID->text());
-        QJsonObject new_stu_obj = stu_to_qjsonobj(new_stu);
+        QJsonObject new_stu_obj = new_stu.stu_to_qjsonobj();
 
 
         s_json.append(new_stu_obj);
@@ -628,7 +606,7 @@ void admin_page::on_pushButton_addnewbook_clicked()
         new_book.new_author(ui->lineEdit_addBookAuthor->text());
         new_book.new_pub_year(ui->lineEdit_addBookYear->text());
 
-        QJsonObject new_book_obj = book_to_qjsonobj(new_book);
+        QJsonObject new_book_obj = new_book.book_to_qjsonobj();
 
 
         b_json.append(new_book_obj);
@@ -717,7 +695,7 @@ void admin_page::on_pushButton_edit_confirm_clicked()
         new_stu.new_year(ui->lineEdit_edit_year->text());
         new_stu.new_part(ui->lineEdit_edit_part->text());
         new_stu.new_roll(ui->lineEdit_edit_id->text());
-        QJsonObject new_stu_obj = stu_to_qjsonobj(new_stu);
+        QJsonObject new_stu_obj = new_stu.stu_to_qjsonobj();
         for(int i=0;i<=json->student_no();i++){
             if(edit_stud_id_temp==s_json.at(i).toObject()["id"].toString()){
                 s_json.removeAt(i);
@@ -826,7 +804,7 @@ void admin_page::on_pushButton_edit_book_clicked()
         new_book.new_name(ui->lineEdit_edit_book_name->text());
         new_book.new_author(ui->lineEdit_edit_book_author->text());
         new_book.new_pub_year(ui->lineEdit_edit_book_year->text());
-        QJsonObject new_book_obj = book_to_qjsonobj(new_book);
+        QJsonObject new_book_obj = new_book.book_to_qjsonobj();
         for(int i=0;i<=json->book_no();i++){
             if(edit_book_id_temp==book_json.at(i).toObject()["id"].toString()){
                 book_json.removeAt(i);

@@ -1,12 +1,11 @@
 #ifndef ADMIN_H
 #define ADMIN_H
 
-#include<iostream>
-#include<string.h>
+#include<QString>
 #include"user.h"
 
 class admin:public user{
-    std::string access_level = "admin";
+    QString access_level = "admin";
 };
 
 

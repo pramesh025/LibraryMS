@@ -2,6 +2,9 @@
 #define STUDENT_H
 
 #include<QString>
+#include<QJsonArray>
+#include<QJsonObject>
+
 #include"user.h"
 
 class student:public user{
@@ -10,7 +13,7 @@ class student:public user{
         QString _course;
         QString _part;
         QString _roll;
-        QString _book_issued[7]={"NULL","NULL","NULL","NULL","NULL","NULL","NULL"};
+        QJsonArray _book_issued;
         QString _access_level = "student";
     public:
         QString year(){
@@ -39,6 +42,21 @@ class student:public user{
         void new_roll(QString new_roll){
             _roll=new_roll;
         }
+
+        QJsonObject stu_to_qjsonobj(){
+            QJsonObject Jtemp;
+            Jtemp.insert("id",_id);
+            Jtemp.insert("name",_name);
+            Jtemp.insert("password",_password);
+            Jtemp.insert("year",_year);
+            Jtemp.insert("part",_part);
+            Jtemp.insert("course",_course);
+            Jtemp.insert("roll",_roll);
+            Jtemp.insert("book_issued",_book_issued);
+            Jtemp.insert("access_level",_access_level);
+            return Jtemp;
+        }
+
 };
 
 #endif // STUDENT_H

@@ -39,12 +39,12 @@
         "access_level": "student",
         "book_issued": [
         ],
-        "course": "BXX",
-        "id": "",
-        "name": "The Void",
+        "course": "BEI",
+        "id": "076bei025",
+        "name": "Pramesh Shrestha",
         "part": "2",
-        "password": "",
-        "roll": "",
+        "password": "1234",
+        "roll": "076bei025",
         "year": "1"
     },
     {
@@ -52,11 +52,28 @@
         "book_issued": [
         ],
         "course": "BEI",
-        "id": "076bei025",
-        "name": "Pramesh Shrestha",
+        "id": "076bei019",
+        "name": "kshitiz pandey",
         "part": "2",
         "password": "1234",
-        "roll": "076bei025",
+        "roll": "076bei019",
+        "year": "1"
+    },
+    {
+        "access_level": "student",
+        "book_issued": [
+            "B002",
+            "B003",
+            "b004",
+            "B005",
+            "B006"
+        ],
+        "course": "BXX",
+        "id": "",
+        "name": "The Void",
+        "part": "2",
+        "password": "",
+        "roll": "",
         "year": "1"
     }
 ]

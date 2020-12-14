@@ -1,7 +1,11 @@
+#include<QDebug>
+#include<QDate>
+
 #include "student_page.h"
 #include "ui_student_page.h"
 #include "login.h"
-
+#include "json_parsing.h"
+#include "date.h"
 student_page::student_page(QJsonObject s_data, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::student_page)
@@ -28,9 +32,68 @@ void student_page::on_pushButton_clicked()
      ui->stackedWidget->setCurrentIndex(0);
 }
 
+
+//issue detail:
 void student_page::on_pushButton_2_clicked()
 {
      ui->stackedWidget->setCurrentIndex(1);
+     parsedata *json = new parsedata;
+     QJsonArray book_json = json->book_data();
+     QJsonObject s_json= student_page::s_data;
+     int fine=0;
+//     qDebug()<<"so were did it crash?";
+     for(int j=0;j<=s_json["book_issued"].toArray().count();j++){
+         for(int i=0;i<=json->book_no();i++){
+             if(s_json["book_issued"].toArray().at(j).toString().toLower()==book_json.at(i).toObject()["id"].toString().toLower()){
+                 QTableWidgetItem *temp_id = new QTableWidgetItem;
+                 temp_id->setText(book_json.at(i).toObject()["id"].toString());
+                 ui->tableWidget_issuedBooks->setItem(j, 0, temp_id);
+
+                 QTableWidgetItem *temp_name = new QTableWidgetItem;
+                 temp_name->setText(book_json.at(i).toObject()["name"].toString());
+                 ui->tableWidget_issuedBooks->setItem(j, 1, temp_name);
+
+
+                 date date;
+                 QDate Today=date.today_Qdate();
+                 QDate iss_Date=QDate::fromString(book_json.at(i).toObject()["issued_date"].toString(), "yyyyMMdd");
+                 QDate return_date=date.add_deadline(iss_Date);
+                 int day= return_date.daysTo(Today);
+
+
+
+                 QTableWidgetItem *temp_issued = new QTableWidgetItem;
+                 temp_issued->setText(iss_Date.toString("yyyy/MM/dd"));
+                 ui->tableWidget_issuedBooks->setItem(j, 2, temp_issued);
+
+                 QTableWidgetItem *temp_return = new QTableWidgetItem;
+                 temp_return->setText(return_date.toString("yyyy/MM/dd"));
+                 ui->tableWidget_issuedBooks->setItem(j, 3, temp_return);
+
+                 QTableWidgetItem *temp_fine = new QTableWidgetItem;
+                 if(day>0){
+                    temp_fine->setText(QString::number(day*date.price()));
+                    fine+=day*date.price();
+                 }
+                 else{
+                     temp_fine->setText("0");
+                 }
+                 ui->tableWidget_issuedBooks->setItem(j,4,temp_fine);
+
+//                 qDebug()<<"so it had crashed here!!!!!!!!!!!";
+                 ui->tableWidget_issuedBooks->insertRow(ui->tableWidget_issuedBooks->rowCount());
+                 break;
+             }
+         }
+     }
+     QTableWidgetItem *temp_fine_ = new QTableWidgetItem;
+     temp_fine_->setText("Total fine");
+     ui->tableWidget_issuedBooks->setItem(s_json["book_issued"].toArray().count(), 3, temp_fine_);
+
+     QTableWidgetItem *temp_fine_val = new QTableWidgetItem;
+     temp_fine_val->setText(QString::number(fine));
+     ui->tableWidget_issuedBooks->setItem(s_json["book_issued"].toArray().count(), 4, temp_fine_val);
+     ui->tableWidget_issuedBooks->item(s_json["book_issued"].toArray().count(), 4)->setTextColor(Qt::red);
 }
 
 void student_page::on_pushButton_3_clicked()

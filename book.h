@@ -2,6 +2,8 @@
 #define BOOK_H
 
 #include<QString>
+#include<QJsonArray>
+#include<QJsonObject>
 
 class book{
     protected:
@@ -49,6 +51,18 @@ class book{
         void new_issued_date(QString new_issued_date){
             _issued_date=new_issued_date;
         }
+
+        QJsonObject book_to_qjsonobj(){
+            QJsonObject Jtemp;
+            Jtemp.insert("id",_id);
+            Jtemp.insert("name",_name);
+            Jtemp.insert("author",_author);
+            Jtemp.insert("pub_year",_pub_year);
+            Jtemp.insert("issued_by",_issued_by);
+            Jtemp.insert("issued_date",_issued_date);
+            return Jtemp;
+        }
+
 };
 
 
