@@ -1,5 +1,7 @@
 #include<QDebug>
 #include<QDate>
+#include<string>
+#include<QPixmap>
 
 #include "student_page.h"
 #include "ui_student_page.h"
@@ -18,7 +20,9 @@ student_page::student_page(QJsonObject s_data, QWidget *parent) :
     ui->label_detail_roll->setText("Roll no.: "+student_page::s_data["roll"].toString());
     ui->label_detail_year->setText("Year: "+student_page::s_data["year"].toString());
     ui->label_detail_part->setText("Part: "+student_page::s_data["part"].toString());
-
+    QPixmap pic("../LibraryMS/img/default_profile.jpg");
+    int height=ui->label_profile->height();
+    ui->label_profile->setPixmap(pic.scaled(height,height,Qt::KeepAspectRatio));
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -33,7 +37,13 @@ void student_page::on_pushButton_clicked()
 }
 
 
-//issue detail:
+
+
+/*------------------------------------------------------------------------------------------------------------
+ * ----                                                                                                 ------
+ * ----                             Issue-detail_page                                                   ------
+ * ----                                                                                                 ------
+ * ----------------------------------------------------------------------------------------------------------*/
 void student_page::on_pushButton_2_clicked()
 {
      ui->stackedWidget->setCurrentIndex(1);
@@ -42,6 +52,7 @@ void student_page::on_pushButton_2_clicked()
      QJsonObject s_json= student_page::s_data;
      int fine=0;
 //     qDebug()<<"so were did it crash?";
+     ui->tableWidget_issuedBooks->setRowCount(1);
      for(int j=0;j<=s_json["book_issued"].toArray().count();j++){
          for(int i=0;i<=json->book_no();i++){
              if(s_json["book_issued"].toArray().at(j).toString().toLower()==book_json.at(i).toObject()["id"].toString().toLower()){
@@ -96,10 +107,76 @@ void student_page::on_pushButton_2_clicked()
      ui->tableWidget_issuedBooks->item(s_json["book_issued"].toArray().count(), 4)->setTextColor(Qt::red);
 }
 
+
+
+
+
+
+
+/*------------------------------------------------------------------------------------------------------------
+ * ----                                                                                                 ------
+ * ----                                book_search_page                                                 ------
+ * ----                                                                                                 ------
+ * ----------------------------------------------------------------------------------------------------------*/
 void student_page::on_pushButton_3_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
+
+
+void student_page::on_pushButton_search_clicked()
+{
+    std::string input = ui->lineEdit_search_words->text().toLower().toStdString();
+    parsedata *json = new parsedata;
+    QJsonArray book_json = json->book_data();
+
+    ui->tableWidget_show_result->setRowCount(0);
+    int row=0;
+    for(int i=0;i<=json->book_no();i++){
+        std::string temp_bname=book_json.at(i).toObject()["name"].toString().toLower().toStdString();
+//        qDebug()<<ui->lineEdit_search_words->text();
+//        qDebug()<<book_json.at(i).toObject()["name"].toString().toLower();
+        if(temp_bname.find(input)!=std::string::npos){
+//            qDebug()<<temp_bname.find(input);
+            ui->tableWidget_show_result->insertRow(ui->tableWidget_show_result->rowCount());
+            QTableWidgetItem *temp_B_id = new QTableWidgetItem;
+            temp_B_id->setText(book_json.at(i).toObject()["id"].toString());
+            ui->tableWidget_show_result->setItem(row, 0, temp_B_id);
+
+            QTableWidgetItem *temp_B_name = new QTableWidgetItem;
+            temp_B_name->setText(book_json.at(i).toObject()["name"].toString());
+            ui->tableWidget_show_result->setItem(row, 1, temp_B_name);
+
+            QTableWidgetItem *temp_B_author = new QTableWidgetItem;
+            temp_B_author->setText(book_json.at(i).toObject()["author"].toString());
+            ui->tableWidget_show_result->setItem(row, 2, temp_B_author);
+
+            QTableWidgetItem *temp_B_status = new QTableWidgetItem;
+            if(book_json.at(i).toObject()["issued_by"].toString()=="NULL"){
+                temp_B_status->setText("Not issued");
+                ui->tableWidget_show_result->setItem(row, 3, temp_B_status);
+            }
+            else{
+                temp_B_status->setText("Issued");
+                ui->tableWidget_show_result->setItem(row, 3, temp_B_status);
+                ui->tableWidget_show_result->item(row,3)->setTextColor(Qt::red);
+            }
+            row++;
+        }
+    }
+    ui->tableWidget_show_result->removeRow(ui->tableWidget_show_result->rowCount()+1);
+}
+
+
+
+
+
+
+/*------------------------------------------------------------------------------------------------------------
+ * ----                                                                                                 ------
+ * ----                                 logout_button                                                   ------
+ * ----                                                                                                 ------
+ * ----------------------------------------------------------------------------------------------------------*/
 
 void student_page::on_pushButton_4_clicked()
 {

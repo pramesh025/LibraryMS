@@ -38,4 +38,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     JSON/admin_data.json \
     JSON/book_data.json \
-    JSON/student_data.json
+    JSON/student_data.json \
+    img/default_profile.jpg

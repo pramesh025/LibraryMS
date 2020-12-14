@@ -27,6 +27,8 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_pushButton_search_clicked();
+
 private:
     Ui::student_page *ui;
 };
