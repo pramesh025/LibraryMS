@@ -192,7 +192,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(243, 243, 243);</string>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="page_book_issue">
       <layout class="QGridLayout" name="gridLayout_2">

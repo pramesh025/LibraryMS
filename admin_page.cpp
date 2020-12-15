@@ -532,7 +532,7 @@ void admin_page::on_pushButton_add_clicked()
 void admin_page::on_pushButton_add_2_clicked()
 {
     foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
-    le->clear();
+        le->clear();
     }
     if(ui->radioButton_addstud->isChecked())
         ui->stackedWidget->setCurrentIndex(5);
@@ -550,7 +550,7 @@ void admin_page::on_pushButton_addConfirm_clicked()
     bool data_already_exists = false;
     for(int i=0;i<=json->student_no();i++){
         if(ui->lineEdit_addID->text()==s_json.at(i).toObject()["id"].toString()){
-            QMessageBox::critical(nullptr,"error","ID already exists");
+            QMessageBox::critical(nullptr,"Error","ID already exists");
             data_already_exists=true;
         }
     }
@@ -649,13 +649,13 @@ void admin_page::on_pushButton_edit_clicked()
 QString edit_stud_id_temp;
 void admin_page::on_pushButton_edit_stuID_SEARCH_clicked()
 {
-    QString input_id = ui->lineEdit_stu_id_edit->text();
+    QString input_id = ui->lineEdit_stu_id_edit->text().toLower();
 //    qDebug()<<input_id;
     parsedata temp;
     QJsonArray s_temp=temp.student_data();
     bool is_data = false;
     for(int i=0;i<=temp.student_no();i++){
-        if(s_temp.at(i).toObject()["id"].toString()==input_id){
+        if(s_temp.at(i).toObject()["id"].toString().toLower()==input_id){
 //            qDebug()<<s_temp.at(i).toObject()["id"].toString();
             is_data=true;
             edit_stud_id_temp=s_temp.at(i).toObject()["id"].toString();
@@ -763,13 +763,13 @@ void admin_page::on_pushButton_delete_data_clicked()
 QString edit_book_id_temp;
 void admin_page::on_pushButton_edit_bookID_search_clicked()
 {
-    QString input_id = ui->lineEdit_book_id_edit->text();
+    QString input_id = ui->lineEdit_book_id_edit->text().toLower();
 //    qDebug()<<input_id;
     parsedata temp;
     QJsonArray book_temp=temp.book_data();
     bool is_data = false;
     for(int i=0;i<=temp.book_no();i++){
-        if(book_temp.at(i).toObject()["id"].toString()==input_id){
+        if(book_temp.at(i).toObject()["id"].toString().toLower()==input_id){
 //            qDebug()<<book_temp.at(i).toObject()["id"].toString();
             is_data=true;
             edit_book_id_temp=book_temp.at(i).toObject()["id"].toString();

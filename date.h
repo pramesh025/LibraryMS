@@ -3,7 +3,8 @@
 
 #include<QString>
 #include<QDate>
-
+#include<iostream>
+#include<string>
 class date{
     QString _today;
     double _price =0.5; //price for late turn in (per day)

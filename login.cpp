@@ -26,6 +26,7 @@ void login::on_pushButton_login_clicked()
     QString entered_password = ui->lineEdit_password->text();
     parsedata *check_json = new parsedata;
     QJsonArray stu_data = check_json->student_data();
+//    qDebug()<<stu_data;
     QJsonArray ad_data = check_json->admin_data();
     int isdata=0;
     for(int i=0;i<=check_json->admin_no();i++){
@@ -46,7 +47,7 @@ void login::on_pushButton_login_clicked()
         }
     }
     for(int i=0;i<=check_json->student_no();i++){
-        if(entered_username==stu_data.at(i).toObject()["id"].toString()&& stu_data.at(i).toObject()["access_level"].toString()=="student"){
+        if(entered_username==stu_data.at(i).toObject()["id"].toString().toLower()&& stu_data.at(i).toObject()["access_level"].toString()=="student"){
 //              qDebug()<< stu_data.at(i).toObject()["id"].toString();
             isdata=1;
             if(entered_password==stu_data.at(i).toObject()["password"].toString()){

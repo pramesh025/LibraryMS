@@ -50,17 +50,25 @@
     {
         "author": "A guy with a Name",
         "id": "B001",
-        "issued_by": "NULL",
-        "issued_date": "NULL",
+        "issued_by": "",
+        "issued_date": "20201215",
         "name": "A Book Title",
         "pub_year": "1430"
     },
     {
         "author": "SCIENCE GUY",
         "id": "B007",
-        "issued_by": "NULL",
-        "issued_date": "NULL",
+        "issued_by": "",
+        "issued_date": "20201215",
         "name": "SCIENCE",
         "pub_year": "1998"
+    },
+    {
+        "author": "Mark Manson",
+        "id": "B010",
+        "issued_by": "NULL",
+        "issued_date": "NULL",
+        "name": "The subtle art of not giving a fck",
+        "pub_year": "2016"
     }
 ]
