@@ -1,21 +1,5 @@
 [
     {
-        "author": "A guy with a Name",
-        "id": "B002",
-        "issued_by": "",
-        "issued_date": "20201214",
-        "name": "A Book Title",
-        "pub_year": "1420"
-    },
-    {
-        "author": "A guy with a Name",
-        "id": "B003",
-        "issued_by": "",
-        "issued_date": "20201214",
-        "name": "A Book Title",
-        "pub_year": "1420"
-    },
-    {
         "author": "Rick Riorden",
         "id": "B004",
         "issued_by": "",
@@ -48,14 +32,6 @@
         "pub_year": "2009"
     },
     {
-        "author": "A guy with a Name",
-        "id": "B001",
-        "issued_by": "",
-        "issued_date": "20201215",
-        "name": "A Book Title",
-        "pub_year": "1430"
-    },
-    {
         "author": "SCIENCE GUY",
         "id": "B007",
         "issued_by": "",
@@ -64,11 +40,35 @@
         "pub_year": "1998"
     },
     {
+        "author": "A guy with a Name",
+        "id": "B003",
+        "issued_by": "076BEI025",
+        "issued_date": "20201216",
+        "name": "A Book Title",
+        "pub_year": "1420"
+    },
+    {
         "author": "Mark Manson",
         "id": "B009",
-        "issued_by": "NULL",
-        "issued_date": "NULL",
+        "issued_by": "076bei028",
+        "issued_date": "20201216",
         "name": "The subtle art of not giving a fck",
         "pub_year": "2016"
+    },
+    {
+        "author": "A guy with a Name",
+        "id": "B002",
+        "issued_by": "076BEI025",
+        "issued_date": "20201216",
+        "name": "A Book Title",
+        "pub_year": "1420"
+    },
+    {
+        "author": "A guy with a Name",
+        "id": "B001",
+        "issued_by": "NULL",
+        "issued_date": "NULL",
+        "name": "A Book Title",
+        "pub_year": "1430"
     }
 ]

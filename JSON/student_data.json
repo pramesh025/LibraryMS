@@ -4,18 +4,6 @@
         "book_issued": [
         ],
         "course": "BEI",
-        "id": "076bei028",
-        "name": "Rahul Shrestha",
-        "part": "2",
-        "password": "12345",
-        "roll": "076bei028",
-        "year": "1"
-    },
-    {
-        "access_level": "student",
-        "book_issued": [
-        ],
-        "course": "BEI",
         "id": "076bei026",
         "name": "Prashant Karn",
         "part": "2",
@@ -74,6 +62,8 @@
     {
         "access_level": "student",
         "book_issued": [
+            "B002",
+            "B003"
         ],
         "course": "BEI",
         "id": "076bei025",
@@ -86,12 +76,22 @@
     {
         "access_level": "student",
         "book_issued": [
-            "B002",
-            "B003",
+            "B009"
+        ],
+        "course": "BEI",
+        "id": "076bei028",
+        "name": "Rahul Shrestha",
+        "part": "2",
+        "password": "12345",
+        "roll": "076bei028",
+        "year": "1"
+    },
+    {
+        "access_level": "student",
+        "book_issued": [
             "b004",
             "B005",
             "B006",
-            "B001",
             "B007"
         ],
         "course": "BXX",
