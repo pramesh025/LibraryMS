@@ -19,7 +19,7 @@ class parsedata{
     public:
         parsedata(){
             //parsing student json data
-            QFile s_file("../LibraryMS/JSON/student_data.json");
+            QFile s_file("./JSON/student_data.json");
             if (!s_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
                 QMessageBox::critical(nullptr,"Error", "Error in parsing student data");
             }
@@ -36,7 +36,7 @@ class parsedata{
             s_num = num;
             s_file.close();
             //parsing admin json data
-            QFile ad_file("../LibraryMS/JSON/admin_data.json");
+            QFile ad_file("./JSON/admin_data.json");
             if (!ad_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
                 QMessageBox::critical(nullptr,"Error", "Error in parsing admin data");
             }
@@ -54,7 +54,7 @@ class parsedata{
             ad_file.close();
 
             //parsing book json data
-            QFile book_file("../LibraryMS/JSON/book_data.json");
+            QFile book_file("./JSON/book_data.json");
             if (!book_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
                 QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
             }

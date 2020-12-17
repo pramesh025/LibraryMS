@@ -135,7 +135,7 @@ void admin_page::on_pushButton_issue_clicked()
                 temp.insert("issued_by",issue_stu_ID);
                 temp.insert("issued_date",today.today());
                 book_json.append(temp);
-                QFile book_file("../LibraryMS/JSON/book_data.json");
+                QFile book_file("./JSON/book_data.json");
                 if (!book_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
                     QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
                 }
@@ -159,7 +159,7 @@ void admin_page::on_pushButton_issue_clicked()
                     tempOBJ.remove("book_issued");
                     tempOBJ.insert("book_issued",tempAr);
                     stu_json.append(tempOBJ);
-                    QFile stu_file("../LibraryMS/JSON/student_data.json");
+                    QFile stu_file("./JSON/student_data.json");
                     if (!stu_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
                         QMessageBox::critical(nullptr,"Error", "Error in parsing student data");
                     }
@@ -296,7 +296,7 @@ void admin_page::on_pushButton_Renew_clicked()
                 temp.remove("issued_date");
                 temp.insert("issued_date",today.today());
                 book_json.append(temp);
-                QFile book_file("../LibraryMS/JSON/book_data.json");
+                QFile book_file("./JSON/book_data.json");
                 if (!book_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
                     QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
                 }
@@ -448,7 +448,7 @@ void admin_page::on_pushButton_out_clicked()
                 break;
             }
         }
-        QFile stu_file("../LibraryMS/JSON/student_data.json");
+        QFile stu_file("./JSON/student_data.json");
         if (!stu_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::critical(nullptr,"Error", "Error in parsing student data");
         }
@@ -474,7 +474,7 @@ void admin_page::on_pushButton_out_clicked()
                     break;
                 }
             }
-            QFile book_file("../LibraryMS/JSON/book_data.json");
+            QFile book_file("./JSON/book_data.json");
             if (!book_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
                 QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
             }
@@ -570,7 +570,7 @@ void admin_page::on_pushButton_addConfirm_clicked()
 
         s_json.append(new_stu_obj);
     //    qDebug()<<s_json;
-        QFile s_file("../LibraryMS/JSON/student_data.json");
+        QFile s_file("./JSON/student_data.json");
         if (!s_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::critical(nullptr,"Error", "Error in parsing student data");
         }
@@ -611,7 +611,7 @@ void admin_page::on_pushButton_addnewbook_clicked()
 
         b_json.append(new_book_obj);
     //    qDebug()<<s_json;
-        QFile b_file("../LibraryMS/JSON/book_data.json");
+        QFile b_file("./JSON/book_data.json");
         if (!b_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
         }
@@ -705,7 +705,7 @@ void admin_page::on_pushButton_edit_confirm_clicked()
 //        qDebug()<<s_json;
         s_json.append(new_stu_obj);
 //        qDebug()<<s_json;
-        QFile s_file("../LibraryMS/JSON/student_data.json");
+        QFile s_file("./JSON/student_data.json");
         if (!s_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::critical(nullptr,"Error", "Error in parsing student data");
         }
@@ -740,7 +740,7 @@ void admin_page::on_pushButton_delete_data_clicked()
     confirm = QMessageBox::question(this, "Confirm", "Are you sure you want to delete?\nID: "+edit_stud_id_temp,
                                     QMessageBox::Yes|QMessageBox::No);
     if(confirm == QMessageBox::Yes){
-        QFile s_file("../LibraryMS/JSON/student_data.json");
+        QFile s_file("./JSON/student_data.json");
         if (!s_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::critical(nullptr,"Error", "Error in parsing student data");
         }
@@ -814,7 +814,7 @@ void admin_page::on_pushButton_edit_book_clicked()
 //        qDebug()<<book_json;
         book_json.append(new_book_obj);
 //        qDebug()<<book_json;
-        QFile s_file("../LibraryMS/JSON/book_data.json");
+        QFile s_file("./JSON/book_data.json");
         if (!s_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
         }
@@ -848,7 +848,7 @@ void admin_page::on_pushButton_delete_book_clicked()
     confirm = QMessageBox::question(this, "Confirm", "Are you sure you want to delete?\nID: "+edit_book_id_temp,
                                     QMessageBox::Yes|QMessageBox::No);
     if(confirm == QMessageBox::Yes){
-        QFile book_file("../LibraryMS/JSON/book_data.json");
+        QFile book_file("./JSON/book_data.json");
         if (!book_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::critical(nullptr,"Error", "Error in parsing book data");
         }

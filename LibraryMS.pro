@@ -41,3 +41,15 @@ DISTFILES += \
     JSON/student_data.json \
     img/default_profile.jpg \
     img/icon.png
+
+copyjson.commands = $(COPY_DIR) $$PWD/JSON $$OUT_PWD
+first.depends = $(first) copyjson
+export(first.depends)
+export(copyjson.commands)
+QMAKE_EXTRA_TARGETS += first copyjson
+
+copyimg.commands = $(COPY_DIR) $$PWD/img $$OUT_PWD
+second.depends = $(second) copyimg
+export(second.depends)
+export(copyimg.commands)
+QMAKE_EXTRA_TARGETS += second copyimg
