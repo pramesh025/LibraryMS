@@ -3,6 +3,7 @@ This is the repo for the OOP Project of 2nd Sem which is a Library Management Sy
     
 
 ##Compiling
+
 - Install Qt. You can download the open source file from (https://www.qt.io/download-open-source)
 - This was made in Qt 5.15, the latest LTS ver available at the time of making.
 - Open the LibraryMS.pro file in Qt Creator
@@ -10,10 +11,12 @@ This is the repo for the OOP Project of 2nd Sem which is a Library Management Sy
 
 
 ##Contributers:
+
 * Kshitiz Pandey
 * Pramesh Shrestha
 * Rahul Shrestha
 * Sandesh Sitaula
    
 ####Link to the report:
-./Final-Report-on-LibraryMS.pdf
+
+[Project Report](./Final-Report-on-LibraryMS.pdf)
